@@ -1,0 +1,451 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1F40455715C2B10200805635 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F40455615C2B10200805635 /* UIKit.framework */; };
+		1F40455915C2B10200805635 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F40455815C2B10200805635 /* Foundation.framework */; };
+		1F40455B15C2B10200805635 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F40455A15C2B10200805635 /* CoreGraphics.framework */; };
+		1F40456115C2B10200805635 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F40455F15C2B10200805635 /* InfoPlist.strings */; };
+		1F40456315C2B10200805635 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F40456215C2B10200805635 /* main.m */; };
+		1F40456715C2B10200805635 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F40456615C2B10200805635 /* AppDelegate.m */; };
+		1F40456A15C2B10200805635 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F40456815C2B10200805635 /* MainStoryboard.storyboard */; };
+		1F40456D15C2B10200805635 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F40456C15C2B10200805635 /* ViewController.m */; };
+		1F40457515C2B10200805635 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F40457415C2B10200805635 /* SenTestingKit.framework */; };
+		1F40457615C2B10200805635 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F40455615C2B10200805635 /* UIKit.framework */; };
+		1F40457715C2B10200805635 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F40455815C2B10200805635 /* Foundation.framework */; };
+		1F40457F15C2B10200805635 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F40457D15C2B10200805635 /* InfoPlist.strings */; };
+		1F40458215C2B10200805635 /* WYSIWYATests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F40458115C2B10200805635 /* WYSIWYATests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1F40457815C2B10200805635 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1F40454915C2B10100805635 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1F40455115C2B10100805635;
+			remoteInfo = WYSIWYA;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1F40455215C2B10100805635 /* WYSIWYA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WYSIWYA.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F40455615C2B10200805635 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		1F40455815C2B10200805635 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		1F40455A15C2B10200805635 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		1F40455E15C2B10200805635 /* WYSIWYA-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WYSIWYA-Info.plist"; sourceTree = "<group>"; };
+		1F40456015C2B10200805635 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F40456215C2B10200805635 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1F40456415C2B10200805635 /* WYSIWYA-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "WYSIWYA-Prefix.pch"; sourceTree = "<group>"; };
+		1F40456515C2B10200805635 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1F40456615C2B10200805635 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1F40456915C2B10200805635 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		1F40456B15C2B10200805635 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		1F40456C15C2B10200805635 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		1F40457315C2B10200805635 /* WYSIWYATests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WYSIWYATests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1F40457415C2B10200805635 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		1F40457C15C2B10200805635 /* WYSIWYATests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WYSIWYATests-Info.plist"; sourceTree = "<group>"; };
+		1F40457E15C2B10200805635 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F40458015C2B10200805635 /* WYSIWYATests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WYSIWYATests.h; sourceTree = "<group>"; };
+		1F40458115C2B10200805635 /* WYSIWYATests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WYSIWYATests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1F40454F15C2B10100805635 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F40455715C2B10200805635 /* UIKit.framework in Frameworks */,
+				1F40455915C2B10200805635 /* Foundation.framework in Frameworks */,
+				1F40455B15C2B10200805635 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F40456F15C2B10200805635 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F40457515C2B10200805635 /* SenTestingKit.framework in Frameworks */,
+				1F40457615C2B10200805635 /* UIKit.framework in Frameworks */,
+				1F40457715C2B10200805635 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1F40454715C2B10100805635 = {
+			isa = PBXGroup;
+			children = (
+				1F40455C15C2B10200805635 /* WYSIWYA */,
+				1F40457A15C2B10200805635 /* WYSIWYATests */,
+				1F40455515C2B10100805635 /* Frameworks */,
+				1F40455315C2B10100805635 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1F40455315C2B10100805635 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1F40455215C2B10100805635 /* WYSIWYA.app */,
+				1F40457315C2B10200805635 /* WYSIWYATests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1F40455515C2B10100805635 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1F40455615C2B10200805635 /* UIKit.framework */,
+				1F40455815C2B10200805635 /* Foundation.framework */,
+				1F40455A15C2B10200805635 /* CoreGraphics.framework */,
+				1F40457415C2B10200805635 /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1F40455C15C2B10200805635 /* WYSIWYA */ = {
+			isa = PBXGroup;
+			children = (
+				1F40456515C2B10200805635 /* AppDelegate.h */,
+				1F40456615C2B10200805635 /* AppDelegate.m */,
+				1F40456815C2B10200805635 /* MainStoryboard.storyboard */,
+				1F40456B15C2B10200805635 /* ViewController.h */,
+				1F40456C15C2B10200805635 /* ViewController.m */,
+				1F40455D15C2B10200805635 /* Supporting Files */,
+			);
+			path = WYSIWYA;
+			sourceTree = "<group>";
+		};
+		1F40455D15C2B10200805635 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F40455E15C2B10200805635 /* WYSIWYA-Info.plist */,
+				1F40455F15C2B10200805635 /* InfoPlist.strings */,
+				1F40456215C2B10200805635 /* main.m */,
+				1F40456415C2B10200805635 /* WYSIWYA-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F40457A15C2B10200805635 /* WYSIWYATests */ = {
+			isa = PBXGroup;
+			children = (
+				1F40458015C2B10200805635 /* WYSIWYATests.h */,
+				1F40458115C2B10200805635 /* WYSIWYATests.m */,
+				1F40457B15C2B10200805635 /* Supporting Files */,
+			);
+			path = WYSIWYATests;
+			sourceTree = "<group>";
+		};
+		1F40457B15C2B10200805635 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1F40457C15C2B10200805635 /* WYSIWYATests-Info.plist */,
+				1F40457D15C2B10200805635 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1F40455115C2B10100805635 /* WYSIWYA */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F40458515C2B10200805635 /* Build configuration list for PBXNativeTarget "WYSIWYA" */;
+			buildPhases = (
+				1F40454E15C2B10100805635 /* Sources */,
+				1F40454F15C2B10100805635 /* Frameworks */,
+				1F40455015C2B10100805635 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WYSIWYA;
+			productName = WYSIWYA;
+			productReference = 1F40455215C2B10100805635 /* WYSIWYA.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1F40457215C2B10200805635 /* WYSIWYATests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1F40458815C2B10200805635 /* Build configuration list for PBXNativeTarget "WYSIWYATests" */;
+			buildPhases = (
+				1F40456E15C2B10200805635 /* Sources */,
+				1F40456F15C2B10200805635 /* Frameworks */,
+				1F40457015C2B10200805635 /* Resources */,
+				1F40457115C2B10200805635 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1F40457915C2B10200805635 /* PBXTargetDependency */,
+			);
+			name = WYSIWYATests;
+			productName = WYSIWYATests;
+			productReference = 1F40457315C2B10200805635 /* WYSIWYATests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1F40454915C2B10100805635 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "Fabian Henckmann";
+			};
+			buildConfigurationList = 1F40454C15C2B10100805635 /* Build configuration list for PBXProject "WYSIWYA" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1F40454715C2B10100805635;
+			productRefGroup = 1F40455315C2B10100805635 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1F40455115C2B10100805635 /* WYSIWYA */,
+				1F40457215C2B10200805635 /* WYSIWYATests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1F40455015C2B10100805635 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F40456115C2B10200805635 /* InfoPlist.strings in Resources */,
+				1F40456A15C2B10200805635 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F40457015C2B10200805635 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F40457F15C2B10200805635 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1F40457115C2B10200805635 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1F40454E15C2B10100805635 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F40456315C2B10200805635 /* main.m in Sources */,
+				1F40456715C2B10200805635 /* AppDelegate.m in Sources */,
+				1F40456D15C2B10200805635 /* ViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1F40456E15C2B10200805635 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1F40458215C2B10200805635 /* WYSIWYATests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1F40457915C2B10200805635 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1F40455115C2B10100805635 /* WYSIWYA */;
+			targetProxy = 1F40457815C2B10200805635 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1F40455F15C2B10200805635 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F40456015C2B10200805635 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F40456815C2B10200805635 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F40456915C2B10200805635 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+		1F40457D15C2B10200805635 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F40457E15C2B10200805635 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1F40458315C2B10200805635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		1F40458415C2B10200805635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1F40458615C2B10200805635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WYSIWYA/WYSIWYA-Prefix.pch";
+				INFOPLIST_FILE = "WYSIWYA/WYSIWYA-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		1F40458715C2B10200805635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WYSIWYA/WYSIWYA-Prefix.pch";
+				INFOPLIST_FILE = "WYSIWYA/WYSIWYA-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		1F40458915C2B10200805635 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WYSIWYA.app/WYSIWYA";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WYSIWYA/WYSIWYA-Prefix.pch";
+				INFOPLIST_FILE = "WYSIWYATests/WYSIWYATests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		1F40458A15C2B10200805635 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/WYSIWYA.app/WYSIWYA";
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "WYSIWYA/WYSIWYA-Prefix.pch";
+				INFOPLIST_FILE = "WYSIWYATests/WYSIWYATests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1F40454C15C2B10100805635 /* Build configuration list for PBXProject "WYSIWYA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F40458315C2B10200805635 /* Debug */,
+				1F40458415C2B10200805635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1F40458515C2B10200805635 /* Build configuration list for PBXNativeTarget "WYSIWYA" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F40458615C2B10200805635 /* Debug */,
+				1F40458715C2B10200805635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1F40458815C2B10200805635 /* Build configuration list for PBXNativeTarget "WYSIWYATests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1F40458915C2B10200805635 /* Debug */,
+				1F40458A15C2B10200805635 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1F40454915C2B10100805635 /* Project object */;
+}
