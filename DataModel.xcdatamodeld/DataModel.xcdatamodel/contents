@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12B19" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Attribute" representedClassName="Attribute" syncable="YES">
+        <attribute name="attributeName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="possibleValues" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="TaskAttributeAllocation" inverseName="attribute" inverseEntity="TaskAttributeAllocation" syncable="YES"/>
+    </entity>
+    <entity name="Project" representedClassName="Project" syncable="YES">
+        <attribute name="creationDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastModified" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="projectDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectFinish" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="projectName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="projectStart" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="taskUidCounter" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="resources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resource" inverseName="projects" inverseEntity="Resource" syncable="YES"/>
+        <relationship name="roles" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="project" inverseEntity="Role" syncable="YES"/>
+        <relationship name="settings" optional="YES" minCount="1" maxCount="1" deletionRule="Cascade" destinationEntity="ProjectSettings" inverseName="project" inverseEntity="ProjectSettings" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="project" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="ProjectSettings" representedClassName="ProjectSettings" syncable="YES">
+        <attribute name="autoTimeManagement" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="settings" inverseEntity="Project" syncable="YES"/>
+    </entity>
+    <entity name="Resource" representedClassName="Resource" syncable="YES">
+        <attribute name="eMailAddress" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="password" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="projects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Project" inverseName="resources" inverseEntity="Project" syncable="YES"/>
+        <relationship name="roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Role" inverseName="resources" inverseEntity="Role" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskRoleAllocation" syncable="YES"/>
+    </entity>
+    <entity name="Role" syncable="YES">
+        <attribute name="isInternal" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="roleName" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ancestor" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="children" inverseEntity="Role" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Role" inverseName="ancestor" inverseEntity="Role" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="roles" inverseEntity="Project" syncable="YES"/>
+        <relationship name="resources" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Resource" inverseName="roles" inverseEntity="Resource" syncable="YES"/>
+        <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TaskRoleAllocation" inverseName="role" inverseEntity="TaskRoleAllocation" syncable="YES"/>
+    </entity>
+    <entity name="Task" representedClassName="Task" syncable="YES">
+        <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="effort" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="effortComplete" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="hasStarted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isFinished" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="isMilestone" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="startDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="taskDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="taskName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="wbs" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="ancestor" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="children" inverseEntity="Task" syncable="YES"/>
+        <relationship name="attributes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskAttributeAllocation" inverseName="task" inverseEntity="TaskAttributeAllocation" syncable="YES"/>
+        <relationship name="children" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Task" inverseName="ancestor" inverseEntity="Task" syncable="YES"/>
+        <relationship name="predecessors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="successors" inverseEntity="Task" syncable="YES"/>
+        <relationship name="project" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Project" inverseName="tasks" inverseEntity="Project" syncable="YES"/>
+        <relationship name="roles" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskRoleAllocation" inverseName="task" inverseEntity="TaskRoleAllocation" syncable="YES"/>
+        <relationship name="successors" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Task" inverseName="predecessors" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="TaskActionTracking" syncable="YES">
+        <attribute name="counter" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <relationship name="task" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="TaskAttributeAllocation" representedClassName="TaskAttributeAllocation" syncable="YES">
+        <attribute name="attributeValue" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="attribute" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Attribute" inverseName="tasks" inverseEntity="Attribute" syncable="YES"/>
+        <relationship name="task" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="attributes" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <entity name="TaskRoleAllocation" representedClassName="TaskResourceAllocation" syncable="YES">
+        <attribute name="pctAllocated" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="role" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="tasks" inverseEntity="Role" syncable="YES"/>
+        <relationship name="task" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Task" inverseName="roles" inverseEntity="Task" syncable="YES"/>
+    </entity>
+    <fetchRequest name="getAllProjects" entity="Project"/>
+    <elements>
+        <element name="Attribute" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="Project" positionX="0" positionY="0" width="128" height="225"/>
+        <element name="ProjectSettings" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="Resource" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="Role" positionX="0" positionY="0" width="128" height="150"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="345"/>
+        <element name="TaskActionTracking" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="TaskAttributeAllocation" positionX="0" positionY="0" width="128" height="90"/>
+        <element name="TaskRoleAllocation" positionX="0" positionY="0" width="128" height="90"/>
+    </elements>
+</model>
