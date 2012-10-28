@@ -38,7 +38,9 @@
     CoreDataController* _localProjectController;
     CoreDataController* _serverProjectController;
     RemoteDataController* _remoteController;
+    NSString* _remoteControllerAction;
     NSDate* _startTime;
+    Project* _deleteProject;
     
 }
 
@@ -223,21 +225,38 @@
     
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        if ([self.projectController deleteObject:[self.projectController objectAtIndexPath:indexPath]]) {
+        if (self.sourceSelector.selectedSegmentIndex) {
             
-            //handle error
-            abort();
+            //delete project from server
+            _remoteController = [[RemoteDataController alloc] init];
+            _remoteControllerAction = @"deleteProject";
+            _remoteController.delegate = self;
+            _deleteProject = (Project*)[self.projectController objectAtIndexPath:indexPath];
+            NSDictionary* parameters = [NSDictionary dictionaryWithObject:_deleteProject.uid forKey:@"uid"];
+            [_remoteController sendRequestToPage:@"projects" withParameters:parameters];
+            
+        } else {
+            
+            //delete project from local data store
+            
+            if ([self.projectController deleteObject:[self.projectController objectAtIndexPath:indexPath]]) {
+                
+                //handle error
+                abort();
+            }
+            
+            [self.tableView reloadData];
+            
+            //check how many objects are left. If none, remove view
+            if (self.projectController.isEmpty) {
+                
+                [self.delegate popoverDidComplete];
+                
+            }
+            
         }
-        
-        [self.tableView reloadData];
-        
-        
-        //check how many objects are left. If none, remove view
-        if (self.projectController.isEmpty) {
-            
-            [self.delegate popoverDidComplete];
-            
-        }
+                
+
     }
 }
 
@@ -424,10 +443,6 @@
         _startTime = [NSDate date];
         [self performSegueWithIdentifier:@"ShowLoadProgress" sender:self];
         
-        _remoteController = [[RemoteDataController alloc] init];
-        _remoteController.delegate = self;
-        [_remoteController sendRequestToPage:@"projects" withParameters:nil];
-        
         self.projectController = _serverProjectController;
         if ([self.projectController countOfList]) {
             
@@ -435,7 +450,12 @@
             
         }
         
+        _remoteController = [[RemoteDataController alloc] init];
+        _remoteControllerAction = @"getProjects";
+        _remoteController.delegate = self;
+        [_remoteController sendRequestToPage:@"projects" withParameters:nil];
         
+      
     } else {
         
         //selected segment = 0 --> grab list locally
@@ -534,33 +554,70 @@
 - (void) processResults:(NSArray*)results
 {
     
-    LoadProgressViewController* progressController = (LoadProgressViewController*)self.popover.contentViewController;
-    
-    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
-    [dateFormatter setDateFormat:@"dd-MM-yyyy"];
-    NSDateFormatter* dateTimeFormatter = [[NSDateFormatter alloc]init];
-    [dateTimeFormatter setDateFormat:@"dd-MM-yyyy hh:mm:ss"];
-    
-    NSLog(@"Number of results from server: %d", [results count]);
-    
-    for (NSDictionary* dataObject in results) {
+    if ([_remoteControllerAction isEqualToString:@"getProjects"]) {
         
-        Project* newProject = (Project*)[self.projectController createObject:@"Project"];
-        newProject.projectName = [dataObject valueForKey:@"projectName"];
-        newProject.projectDescription = [dataObject valueForKey:@"projectDescription"];
-        newProject.creationDate = [dateTimeFormatter dateFromString:[dataObject valueForKey:@"creationDate"]];
-        newProject.lastModified = [dateTimeFormatter dateFromString:[dataObject valueForKey:@"lastModified"]];
-        newProject.projectStart = [dateFormatter dateFromString:[dataObject valueForKey:@"projectStart"]];
-        newProject.projectFinish = [dateFormatter dateFromString:[dataObject valueForKey:@"projectFinish"]];
-        newProject.uid = [dataObject valueForKey:@"uid"];
-        newProject.numberOfTasks = [[dataObject valueForKey:@"tasks"] intValue];
-        NSLog(@"Created new project as part of JSON deserialization: %@", newProject);
+        //processing getProjects request
+        
+        LoadProgressViewController* progressController = (LoadProgressViewController*)self.popover.contentViewController;
+        
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
+        [dateFormatter setDateFormat:@"dd-MM-yyyy"];
+        NSDateFormatter* dateTimeFormatter = [[NSDateFormatter alloc]init];
+        [dateTimeFormatter setDateFormat:@"dd-MM-yyyy hh:mm:ss"];
+        
+        NSLog(@"Number of results from server: %d", [results count]);
+        
+        for (NSDictionary* dataObject in results) {
+            
+            Project* newProject = (Project*)[self.projectController createObject:@"Project"];
+            newProject.projectName = [dataObject valueForKey:@"projectName"];
+            newProject.projectDescription = [dataObject valueForKey:@"projectDescription"];
+            newProject.creationDate = [dateTimeFormatter dateFromString:[dataObject valueForKey:@"creationDate"]];
+            newProject.lastModified = [dateTimeFormatter dateFromString:[dataObject valueForKey:@"lastModified"]];
+            newProject.projectStart = [dateFormatter dateFromString:[dataObject valueForKey:@"projectStart"]];
+            newProject.projectFinish = [dateFormatter dateFromString:[dataObject valueForKey:@"projectFinish"]];
+            newProject.uid = [dataObject valueForKey:@"uid"];
+            newProject.numberOfTasks = [[dataObject valueForKey:@"tasks"] intValue];
+            NSLog(@"Created new project as part of JSON deserialization: %@", newProject);
+            
+        }
+        
+        [progressController.progressBar setProgress:1.0 animated:YES];
+        [self.popover dismissPopoverAnimated:YES];
+        [self.projectController saveContext];
+        
+    } else if ([_remoteControllerAction isEqualToString:@"deleteProject"]) {
+        
+        id firstResult = [results objectAtIndex:0];
+        NSLog(@"The class of the returned parameter after the delete is %@", [firstResult class]);
+        
+        // object _deleteProject holds the project managed data object that was deleted on the server. Now needs to be deleted from the temporary store (if we're still looking at it)
+        
+        if ((_deleteProject) && (self.sourceSelector.selectedSegmentIndex)) {
+            
+            if ([self.projectController deleteObject:_deleteProject]) {
+                
+                //handle error
+                abort();
+            }
+            
+            _deleteProject = nil;
+            [self.tableView reloadData];
+            
+            //check how many objects are left. If none, remove view
+            if (self.projectController.isEmpty) {
+                
+                [self.delegate popoverDidComplete];
+                
+            }
+            
+        }
         
     }
-    
-    [progressController.progressBar setProgress:1.0 animated:YES];
-    [self.projectController saveContext];
-    [self.popover dismissPopoverAnimated:YES];
+
+    //remote call was fully processed, set the remote controller action tracker to empty string
+    _remoteControllerAction = @"";
+
     [self.tableView reloadData];
     
 }

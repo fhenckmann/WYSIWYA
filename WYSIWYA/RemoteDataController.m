@@ -108,7 +108,7 @@
 
 {
     NSError* error = nil;
-    NSArray* results = [NSJSONSerialization JSONObjectWithData:_receivedData options:nil error:&error];
+    NSArray* results = [NSJSONSerialization JSONObjectWithData:_receivedData options:0 error:&error];
     
     if (error) {
         [self.delegate handleError:[error description]];
