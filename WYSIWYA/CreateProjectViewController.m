@@ -10,6 +10,7 @@
 #import "Project.h"
 #import "Task.h"
 #import "CoreDataController.h"
+#import "SharedData.h"
 
 
 @interface CreateProjectViewController ()
@@ -45,6 +46,17 @@
 
     self.inputStartDate.inputView = self.datePicker;
     self.inputEndDate.inputView = self.datePicker;
+    
+    //create buttons
+    self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel:)];
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
+    
+    self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done Typing" style:UIBarButtonItemStyleBordered target:self action:@selector(doneEditing:)];
+    self.navigationItem.rightBarButtonItem = self.doneButton;
+    [self.inputProjectName becomeFirstResponder];
+    
+    self.createProjectButton = [[UIBarButtonItem alloc] initWithTitle:@"Create Project" style:UIBarButtonItemStyleBordered target:self action:@selector(createProject:)];
+    
 
 }
 
@@ -114,14 +126,40 @@
 #pragma mark - Table view delegate
 
 
-- (IBAction)cancel:(id)sender {
+- (IBAction)cancel:(id)sender
+{
     
     [self.delegate popoverDidComplete];
+    
 }
 
 
+- (IBAction)doneEditing:(id)sender
+{
+    
+    if ([self.inputStartDate isFirstResponder]) {
+        
+        [self.inputStartDate resignFirstResponder];
+        
+    } else if ([self.inputEndDate isFirstResponder]) {
+        
+        [self.inputEndDate resignFirstResponder];
+        
+    } else if ([self.inputProjectName isFirstResponder]) {
+        
+        [self.inputProjectName resignFirstResponder];
+        
+    } else if ([self.inputProjectDescription isFirstResponder]) {
+        
+        [self.inputProjectDescription resignFirstResponder];
+        
+    }
+    
+    self.navigationItem.rightBarButtonItem = self.createProjectButton;
+    
+}
 
-- (IBAction)done:(id)sender {
+- (IBAction)createProject:(id)sender {
     
     if ([self.inputStartDate isFirstResponder]) {
         
@@ -183,22 +221,15 @@
             
             //project successfully saved
             
-            //now move on to project view - need to send back info to super view
-            
-            /*
-             [[self tableView] reloadData];
-            [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-            [self tableView:self.tableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
-            [self.detailViewController.backgroundView setHidden:YES];
-            self.detailViewController.project = newProject;
-             */
             
         }
         
-        [self.delegate popoverDidComplete];
+        [[SharedData sharedInstance] setActiveProject:newProject];
+        
+        [self.delegate loadProject];
+
         
     }
-    
     
     
 }
@@ -226,7 +257,8 @@
     
     //this doesn't work - instead we have to create two buttons and assign them alternatingly to the right side of the nav bar
     
-    self.saveButton.title = @"Done";
+    self.navigationItem.rightBarButtonItem = self.doneButton;
+    self.navigationItem.leftBarButtonItem = nil;
     
     
 }
@@ -234,7 +266,9 @@
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     
-    self.saveButton.title = @"Create Project";
+    self.navigationItem.rightBarButtonItem = self.createProjectButton;
+    self.navigationItem.leftBarButtonItem = self.cancelButton;
+    
     
 }
 

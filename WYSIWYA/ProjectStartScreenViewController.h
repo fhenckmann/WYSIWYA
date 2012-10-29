@@ -17,7 +17,7 @@
 @property (strong,nonatomic) CoreDataController* dataController;
 @property (strong, nonatomic) Project* activeProject;
 
-- (void) loadProject:(Project *)selectedProject;
+- (void) loadProject;
 - (void) popoverDidComplete;
 
 @end

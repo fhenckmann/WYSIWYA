@@ -15,6 +15,7 @@
 #import "Project.h"
 #import "Task.h"
 #import "AppDelegate.h"
+#import "SharedData.h"
 
 @interface ProjectStartScreenViewController ()
 
@@ -48,9 +49,12 @@
     //create the Core Data Controller
     NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastModified" ascending:NO];
     NSArray* sortDescriptors = @[sortDescriptor];
-    NSManagedObjectContext* context = [(AppDelegate *)[[UIApplication sharedApplication] delegate]managedObjectContext];
+    NSManagedObjectContext* context = [[SharedData sharedInstance] managedObjectContext];
     
     self.projectController = [[CoreDataController alloc] initWithEntity:@"Project" context:context sortDescriptor:sortDescriptors sectionNameKeyPath:nil predicate:nil fetchSize:20 cacheName:nil];
+    
+    [[SharedData sharedInstance] setProjectController:self.projectController];
+    
 }
 
 - (void)viewDidUnload
@@ -114,11 +118,11 @@
     
 }
 
-- (void)loadProject:(Project*) selectedProject
+- (void)loadProject
 {
     
     [self.popover dismissPopoverAnimated:YES];
-    self.activeProject = selectedProject;
+    self.activeProject = [[SharedData sharedInstance] activeProject];
     [self performSegueWithIdentifier:@"ShowTabBar" sender:self];
     
 }

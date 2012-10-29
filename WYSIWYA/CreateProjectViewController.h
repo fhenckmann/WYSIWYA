@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class CoreDataController;
+@class Project;
 
 @protocol CreateProjectViewControllerDelegate;
 
@@ -22,16 +23,21 @@
 @property (weak, nonatomic) IBOutlet UITextField *inputEndDate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
+@property (weak, nonatomic) UIBarButtonItem* cancelButton;
+@property (weak, nonatomic) UIBarButtonItem* doneButton;
+@property (weak, nonatomic) UIBarButtonItem* createProjectButton;
 
 - (IBAction)dateChanged:(id)sender;
 
 - (IBAction)cancel:(id)sender;
-- (IBAction)done:(id)sender;
+- (IBAction)createProject:(id)sender;
+- (IBAction)doneEditing:(id)sender;
 
 @end
 
 @protocol CreateProjectViewControllerDelegate <NSObject>
 
 - (void)popoverDidComplete;
+- (void)loadProject;
 
 @end

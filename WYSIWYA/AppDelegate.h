@@ -7,20 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+
 @class CoreDataController;
+@class SharedData;
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) SharedData* globalStore;
 
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectContext *tempObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *tempStoreCoordinator;
-@property (readonly, strong, nonatomic) CoreDataController *dataController;
-
-- (void)saveContext;
-- (NSURL *)applicationDocumentsDirectory;
 
 @end
