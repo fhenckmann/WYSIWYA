@@ -27,7 +27,6 @@
 @synthesize inputStartDate = _inputStartDate;
 @synthesize inputEndDate = _inputEndDate;
 @synthesize saveButton = _saveButton;
-@synthesize dataController = _dataController;
 @synthesize delegate = _delegate;
 @synthesize datePicker = _datePicker;
 @synthesize dateFormatter = _dateFormatter;
@@ -181,7 +180,7 @@
     
     if ([self.inputProjectName.text length]) {
         
-        Project* newProject = (Project*)[self.dataController createObject:@"Project"];
+        Project* newProject = (Project*)[[SharedData sharedInstance].projectController createObject:@"Project"];
         NSLog(@"Created new project: %@", newProject);
         newProject.projectName = self.inputProjectName.text;
         newProject.projectDescription = self.inputProjectDescription.text;
@@ -191,7 +190,7 @@
         newProject.projectFinish = [NSDate date];
         
         //save one main task with project
-        Task* newTask = (Task*)[self.dataController createObject:@"Task"];
+        Task* newTask = (Task*)[[SharedData sharedInstance].taskController createObject:@"Task"];
         NSLog(@"Created new task: %@", newTask);
         newTask.taskName = self.inputProjectName.text;
         newTask.taskDescription = self.inputProjectDescription.text;
@@ -205,13 +204,13 @@
         newTask.wbs = @"001.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000";
         newTask.project = newProject;
         
-        Task* hiddenRootTask = (Task*)[self.dataController createObject:@"Task"];
+        Task* hiddenRootTask = (Task*)[[SharedData sharedInstance].taskController createObject:@"Task"];
         hiddenRootTask.wbs = @"000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000.000";
         newTask.ancestor = hiddenRootTask;
         hiddenRootTask.ancestor = hiddenRootTask;
         
         // Save the context.
-        if ([self.dataController saveContext]) {
+        if ([[SharedData sharedInstance].taskController saveContext]) {
             
             //error
             NSLog(@"error");

@@ -15,7 +15,6 @@
 @interface ImportProjectViewController : UIViewController
 
 @property (weak, nonatomic) id <ImportProjectViewControllerDelegate> delegate;
-@property (strong,nonatomic) CoreDataController* dataController;
 
 @end
 

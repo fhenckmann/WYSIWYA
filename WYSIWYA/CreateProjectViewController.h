@@ -16,7 +16,6 @@
 
 
 @property (weak, nonatomic) id <CreateProjectViewControllerDelegate> delegate;
-@property (strong,nonatomic) CoreDataController* dataController;
 @property (weak, nonatomic) IBOutlet UITextField *inputProjectName;
 @property (weak, nonatomic) IBOutlet UITextField *inputProjectDescription;
 @property (weak, nonatomic) IBOutlet UITextField *inputStartDate;

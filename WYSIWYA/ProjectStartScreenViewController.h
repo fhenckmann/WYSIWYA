@@ -14,8 +14,6 @@
 
 @interface ProjectStartScreenViewController : UIViewController <CreateProjectViewControllerDelegate, ProjectListViewControllerDelegate, ImportProjectViewControllerDelegate>
 
-@property (strong,nonatomic) CoreDataController* dataController;
-@property (strong, nonatomic) Project* activeProject;
 
 - (void) loadProject;
 - (void) popoverDidComplete;

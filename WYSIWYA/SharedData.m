@@ -8,6 +8,7 @@
 
 #import "SharedData.h"
 #import "Project.h"
+#import "CoreDataController.h"
 #import <CoreData/CoreData.h>
 
 @implementation SharedData
@@ -19,7 +20,9 @@ static SharedData* _sharedInstance;
 @synthesize managedObjectModel = _managedObjectModel;
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 @synthesize tempStoreCoordinator = _tempStoreCoordinator;
-@synthesize dataController = _dataController;
+@synthesize projectController = _projectController;
+@synthesize remoteProjectController = _remoteProjectController;
+@synthesize taskController = _taskController;
 
 + (SharedData*) sharedInstance
 {
@@ -45,6 +48,88 @@ static SharedData* _sharedInstance;
             abort();
         }
     }
+}
+
+
+//returns-creates CoreDataController instance with list of all locally stored projects
+
+- (CoreDataController*) projectController
+{
+    
+    if (_projectController != nil) {
+        
+        return _projectController;
+        
+    }
+    
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastModified" ascending:NO];
+    NSArray* sortDescriptors = @[sortDescriptor];
+    _projectController = [[CoreDataController alloc] initWithEntity:@"Project" context:self.managedObjectContext sortDescriptor:sortDescriptors sectionNameKeyPath:nil predicate:nil fetchSize:20 cacheName:nil];
+    
+    return _projectController;
+    
+}
+
+
+// deletes the current project controller and then returns a fresh one (by calling the local projectController property method)
+
+- (CoreDataController*) freshProjectController
+{
+    
+    _projectController = nil;
+    
+    return self.projectController;
+    
+}
+
+
+// returns-creates a CoreDataController instance from the temporary persistence store
+
+- (CoreDataController*) remoteProjectController
+{
+    
+    if (_remoteProjectController != nil) {
+        
+        return _remoteProjectController;
+        
+    }
+    
+    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastModified" ascending:NO];
+    NSArray* sortDescriptors = @[sortDescriptor];
+    _remoteProjectController = [[CoreDataController alloc] initWithEntity:@"Project" context:self.tempObjectContext sortDescriptor:sortDescriptors sectionNameKeyPath:nil predicate:nil fetchSize:20 cacheName:nil];
+    return _remoteProjectController;
+    
+}
+
+// deletes current remote project controller and returns a new one (through calling local remoteProjectController property method)
+
+- (CoreDataController*) freshRemoteController
+{
+    
+    _remoteProjectController = nil;
+    
+    return self.remoteProjectController;
+    
+}
+
+
+// returns-creates a CoreDataController instance with all tasks of currently active project
+
+- (CoreDataController*) taskController
+{
+    
+    if (_taskController != nil) {
+        
+        return _taskController;
+        
+    }
+    
+    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"wbs" ascending:YES];
+    NSArray *sortDescriptors = @[sortDescriptor];
+    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"(project == %@)", self.activeProject];
+    _taskController = [[CoreDataController alloc] initWithEntity:@"Task" context:self.managedObjectContext sortDescriptor:sortDescriptors sectionNameKeyPath:nil predicate:predicate fetchSize:100 cacheName:nil];
+    return _taskController;
+    
 }
 
 #pragma mark - Core Data stack

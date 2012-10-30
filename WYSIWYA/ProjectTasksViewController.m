@@ -36,7 +36,6 @@
 
 @synthesize hierarchyController = _hierarchyController;
 @synthesize detailViewController = _detailViewController;
-@synthesize project = _project;
 @synthesize selectedTask = _selectedTask;
 //@synthesize splitViewController = _splitViewController;
 
@@ -49,12 +48,6 @@
     self.tableView.editing = YES;
     self.tableView.allowsSelectionDuringEditing = YES;
     
-    //create the Core Data Controller
-    NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"wbs" ascending:YES];
-    NSArray *sortDescriptors = @[sortDescriptor];
-    NSPredicate* predicate = [NSPredicate predicateWithFormat:@"(project == %@)", self.project];
-    NSManagedObjectContext* context = [(AppDelegate *)[[UIApplication sharedApplication] delegate]managedObjectContext];
-    self.taskController = [[CoreDataController alloc] initWithEntity:@"Task" context:context sortDescriptor:sortDescriptors sectionNameKeyPath:nil predicate:predicate fetchSize:100 cacheName:nil];
     _formatKeys = [NSArray arrayWithObjects:UITextAttributeTextColor, UITextAttributeTextShadowColor, UITextAttributeFont, nil];
     _formatValuesDisabled = [NSArray arrayWithObjects:[UIColor lightGrayColor],[UIColor whiteColor],[UIFont fontWithName:@"Helvetica-Bold" size:16],nil];
     _formatValuesEnabled = [NSArray arrayWithObjects:[UIColor darkGrayColor],[UIColor clearColor], [UIFont fontWithName:@"Helvetica-Bold" size:16],nil];

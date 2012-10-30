@@ -20,16 +20,13 @@
 @interface ProjectStartScreenViewController ()
 
 
-@property (strong, nonatomic) CoreDataController* projectController;
 @property (strong, nonatomic) UIPopoverController* popover;
 
 @end
 
 @implementation ProjectStartScreenViewController
 
-@synthesize projectController = _projectController;
 @synthesize popover = _popover;
-@synthesize activeProject = _activeProject;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -45,15 +42,6 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
-    
-    //create the Core Data Controller
-    NSSortDescriptor* sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"lastModified" ascending:NO];
-    NSArray* sortDescriptors = @[sortDescriptor];
-    NSManagedObjectContext* context = [[SharedData sharedInstance] managedObjectContext];
-    
-    self.projectController = [[CoreDataController alloc] initWithEntity:@"Project" context:context sortDescriptor:sortDescriptors sectionNameKeyPath:nil predicate:nil fetchSize:20 cacheName:nil];
-    
-    [[SharedData sharedInstance] setProjectController:self.projectController];
     
 }
 
@@ -76,7 +64,6 @@
      
         self.popover = [(UIStoryboardPopoverSegue *)segue popoverController];
         CreateProjectViewController* createProjectController = (CreateProjectViewController*)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        createProjectController.dataController = self.projectController;
         createProjectController.delegate = self;
      
      }
@@ -93,7 +80,6 @@
         
         self.popover = [(UIStoryboardPopoverSegue *)segue popoverController];
         ImportProjectViewController* importProjectController = (ImportProjectViewController*)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        importProjectController.dataController = self.projectController;
         importProjectController.delegate = self;
         
         
@@ -101,11 +87,7 @@
     
     if ([[segue identifier] isEqualToString:@"ShowTabBar"]) {
         
-        ProjectSettingsViewController* projectSettingsController = (ProjectSettingsViewController*)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        projectSettingsController.dataController = self.projectController;
-        projectSettingsController.activeProject = self.activeProject;
-
-        
+        ProjectSettingsViewController* projectSettingsController = (ProjectSettingsViewController*)[[[segue destinationViewController] viewControllers] objectAtIndex:0];        
         
     }
 }
@@ -122,7 +104,6 @@
 {
     
     [self.popover dismissPopoverAnimated:YES];
-    self.activeProject = [[SharedData sharedInstance] activeProject];
     [self performSegueWithIdentifier:@"ShowTabBar" sender:self];
     
 }

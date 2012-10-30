@@ -15,17 +15,20 @@
 @interface SharedData : NSObject
 
 @property (nonatomic, retain) Project* activeProject;
-@property (nonatomic, retain) CoreDataController* projectController;
+@property (nonatomic, readonly, retain) CoreDataController* projectController;
+@property (nonatomic, readonly, retain) CoreDataController* taskController;
+@property (nonatomic, readonly, retain) CoreDataController* remoteProjectController;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectContext *tempObjectContext;
 @property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *tempStoreCoordinator;
-@property (readonly, strong, nonatomic) CoreDataController *dataController;
 
 + (SharedData*) sharedInstance;
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (CoreDataController*) freshProjectController;
+- (CoreDataController*) freshRemoteController;
 
 @end

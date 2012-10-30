@@ -18,7 +18,6 @@
 @interface ProjectListViewController : UITableViewController <RemoteDataControllerDelegate>
 
 @property (weak, nonatomic) id <ProjectListViewControllerDelegate> delegate;
-@property (strong, nonatomic) ProjectDetailsViewController* detailViewController;
 @property (weak, nonatomic) UIBarButtonItem* cancelButton;
 @property (weak, nonatomic) UIBarButtonItem* selectButton;
 @property (weak, nonatomic) UIBarButtonItem* cancelDeleteButton;
@@ -39,6 +38,6 @@
 @protocol ProjectListViewControllerDelegate <NSObject>
 
 - (void) popoverDidComplete;
-- (void) loadProject:(Project*) selectedProject;
+- (void) loadProject;
 
 @end

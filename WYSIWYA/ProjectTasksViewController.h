@@ -15,7 +15,6 @@
 
 @interface ProjectTasksViewController : UITableViewController <UISplitViewControllerDelegate,UITabBarControllerDelegate>
 
-@property (strong, nonatomic) Project* project;
 @property (strong, nonatomic) Task* selectedTask;
 @property (strong, nonatomic) ProjectTasksDetailViewController* detailViewController;
 //@property (strong, nonatomic) UISplitViewController* splitViewController;
