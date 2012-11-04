@@ -17,7 +17,7 @@
 
 @property (weak, nonatomic) id <CreateProjectViewControllerDelegate> delegate;
 @property (weak, nonatomic) IBOutlet UITextField *inputProjectName;
-@property (weak, nonatomic) IBOutlet UITextField *inputProjectDescription;
+@property (weak, nonatomic) IBOutlet UITextView *inputProjectDescription;
 @property (weak, nonatomic) IBOutlet UITextField *inputStartDate;
 @property (weak, nonatomic) IBOutlet UITextField *inputEndDate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;

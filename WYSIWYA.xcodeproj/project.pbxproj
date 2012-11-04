@@ -31,6 +31,17 @@
 		1F40458D15C2BA1A00805635 /* TaskOld.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F40458C15C2BA1A00805635 /* TaskOld.m */; };
 		1F40459A15C60AF900805635 /* project_plan.xml in Resources */ = {isa = PBXBuildFile; fileRef = 1F40459915C60AF900805635 /* project_plan.xml */; };
 		1F4045A315C68F5600805635 /* ProjectListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4045A215C68F5600805635 /* ProjectListViewController.m */; };
+		1F99A8B116428A5400D3D628 /* TaskListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F99A8B016428A5400D3D628 /* TaskListViewController.m */; };
+		1F99A8B416428C3500D3D628 /* TaskListTableViewDesign.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F99A8B316428C3500D3D628 /* TaskListTableViewDesign.m */; };
+		1F99A8BD1645340600D3D628 /* IndentedUILabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F99A8BC1645340600D3D628 /* IndentedUILabel.m */; };
+		1F99A8C01645363200D3D628 /* TaskDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F99A8BF1645363200D3D628 /* TaskDetailViewController.m */; };
+		1F99A8C3164541BA00D3D628 /* CheckBox.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F99A8C2164541BA00D3D628 /* CheckBox.m */; };
+		1F99A8C61645461100D3D628 /* checkbox_ticked.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F99A8C41645461100D3D628 /* checkbox_ticked.jpg */; };
+		1F99A8C71645461100D3D628 /* checkbox_unticked.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F99A8C51645461100D3D628 /* checkbox_unticked.jpg */; };
+		1F99A8C91646373000D3D628 /* background_create_project.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F99A8C81646373000D3D628 /* background_create_project.png */; };
+		1F99A8CD164687CA00D3D628 /* background_task_details.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 1F99A8CA164687C900D3D628 /* background_task_details.jpg */; };
+		1F99A8CE164687CA00D3D628 /* checkbox_ticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F99A8CB164687CA00D3D628 /* checkbox_ticked.png */; };
+		1F99A8CF164687CA00D3D628 /* checkbox_unticked.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F99A8CC164687CA00D3D628 /* checkbox_unticked.png */; };
 		1FC93A6415D4B38E0004194B /* CoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FC93A6315D4B38E0004194B /* CoreDataController.m */; };
 		1FC93A6715D4E0330004194B /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1FC93A6515D4E0330004194B /* DataModel.xcdatamodeld */; };
 		1FC93A9D15D4F46E0004194B /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FC93A9C15D4F46E0004194B /* CoreData.framework */; };
@@ -55,8 +66,6 @@
 		1FCF5E5615E60BFB00BA631C /* new_project.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCF5E4F15E60BF700BA631C /* new_project.png */; };
 		1FCF5E5715E60BFB00BA631C /* open_project.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FCF5E5015E60BF900BA631C /* open_project.png */; };
 		1FCF5E5915EAFD6D00BA631C /* WYSIWYA-Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FCF5E5815EAFD6B00BA631C /* WYSIWYA-Main.storyboard */; };
-		1FD0B0E4163E0F8D0030F286 /* TaskListPortraitViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD0B0E3163E0F8D0030F286 /* TaskListPortraitViewController.m */; };
-		1FD0B0E7163E0FC40030F286 /* TaskListLandscapeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD0B0E6163E0FC40030F286 /* TaskListLandscapeViewController.m */; };
 		1FD0B0EA163E7FEE0030F286 /* SharedData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FD0B0E9163E7FEE0030F286 /* SharedData.m */; };
 		1FEF04A1161BC34F000A9830 /* RemoteDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF04A0161BC34F000A9830 /* RemoteDataController.m */; };
 		1FEF04AA161C219B000A9830 /* LoadProgressViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FEF04A9161C219B000A9830 /* LoadProgressViewController.m */; };
@@ -116,6 +125,22 @@
 		1F40459915C60AF900805635 /* project_plan.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = project_plan.xml; sourceTree = "<group>"; };
 		1F4045A115C68F5600805635 /* ProjectListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProjectListViewController.h; sourceTree = "<group>"; };
 		1F4045A215C68F5600805635 /* ProjectListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProjectListViewController.m; sourceTree = "<group>"; };
+		1F99A8AF16428A5400D3D628 /* TaskListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskListViewController.h; path = ../TaskListViewController.h; sourceTree = "<group>"; };
+		1F99A8B016428A5400D3D628 /* TaskListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskListViewController.m; path = ../TaskListViewController.m; sourceTree = "<group>"; };
+		1F99A8B216428C3500D3D628 /* TaskListTableViewDesign.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListTableViewDesign.h; sourceTree = "<group>"; };
+		1F99A8B316428C3500D3D628 /* TaskListTableViewDesign.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListTableViewDesign.m; sourceTree = "<group>"; };
+		1F99A8BB1645340600D3D628 /* IndentedUILabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndentedUILabel.h; sourceTree = "<group>"; };
+		1F99A8BC1645340600D3D628 /* IndentedUILabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndentedUILabel.m; sourceTree = "<group>"; };
+		1F99A8BE1645363200D3D628 /* TaskDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TaskDetailViewController.h; path = ../TaskDetailViewController.h; sourceTree = "<group>"; };
+		1F99A8BF1645363200D3D628 /* TaskDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TaskDetailViewController.m; path = ../TaskDetailViewController.m; sourceTree = "<group>"; };
+		1F99A8C1164541BA00D3D628 /* CheckBox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckBox.h; sourceTree = "<group>"; };
+		1F99A8C2164541BA00D3D628 /* CheckBox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckBox.m; sourceTree = "<group>"; };
+		1F99A8C41645461100D3D628 /* checkbox_ticked.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = checkbox_ticked.jpg; sourceTree = "<group>"; };
+		1F99A8C51645461100D3D628 /* checkbox_unticked.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = checkbox_unticked.jpg; sourceTree = "<group>"; };
+		1F99A8C81646373000D3D628 /* background_create_project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_create_project.png; sourceTree = "<group>"; };
+		1F99A8CA164687C900D3D628 /* background_task_details.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background_task_details.jpg; sourceTree = "<group>"; };
+		1F99A8CB164687CA00D3D628 /* checkbox_ticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_ticked.png; sourceTree = "<group>"; };
+		1F99A8CC164687CA00D3D628 /* checkbox_unticked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = checkbox_unticked.png; sourceTree = "<group>"; };
 		1FC93A6215D4B38E0004194B /* CoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataController.h; sourceTree = "<group>"; };
 		1FC93A6315D4B38E0004194B /* CoreDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataController.m; sourceTree = "<group>"; };
 		1FC93A6615D4E0330004194B /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
@@ -154,10 +179,6 @@
 		1FCF5E4F15E60BF700BA631C /* new_project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = new_project.png; sourceTree = "<group>"; };
 		1FCF5E5015E60BF900BA631C /* open_project.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = open_project.png; sourceTree = "<group>"; };
 		1FCF5E5815EAFD6B00BA631C /* WYSIWYA-Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "WYSIWYA-Main.storyboard"; sourceTree = "<group>"; };
-		1FD0B0E2163E0F8D0030F286 /* TaskListPortraitViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListPortraitViewController.h; sourceTree = "<group>"; };
-		1FD0B0E3163E0F8D0030F286 /* TaskListPortraitViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListPortraitViewController.m; sourceTree = "<group>"; };
-		1FD0B0E5163E0FC40030F286 /* TaskListLandscapeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskListLandscapeViewController.h; sourceTree = "<group>"; };
-		1FD0B0E6163E0FC40030F286 /* TaskListLandscapeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskListLandscapeViewController.m; sourceTree = "<group>"; };
 		1FD0B0E8163E7FEE0030F286 /* SharedData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedData.h; sourceTree = "<group>"; };
 		1FD0B0E9163E7FEE0030F286 /* SharedData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedData.m; sourceTree = "<group>"; };
 		1FEF049F161BC34F000A9830 /* RemoteDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemoteDataController.h; sourceTree = "<group>"; };
@@ -251,10 +272,10 @@
 				1F40456615C2B10200805635 /* AppDelegate.m */,
 				1F40456815C2B10200805635 /* MainStoryboard.storyboard */,
 				1FCF5E5815EAFD6B00BA631C /* WYSIWYA-Main.storyboard */,
-				1FD0B0E2163E0F8D0030F286 /* TaskListPortraitViewController.h */,
-				1FD0B0E3163E0F8D0030F286 /* TaskListPortraitViewController.m */,
-				1FD0B0E5163E0FC40030F286 /* TaskListLandscapeViewController.h */,
-				1FD0B0E6163E0FC40030F286 /* TaskListLandscapeViewController.m */,
+				1F99A8CA164687C900D3D628 /* background_task_details.jpg */,
+				1F99A8CB164687CA00D3D628 /* checkbox_ticked.png */,
+				1F99A8CC164687CA00D3D628 /* checkbox_unticked.png */,
+				1F99A8C81646373000D3D628 /* background_create_project.png */,
 				1F0A85A615F73ABF0026FA28 /* ProjectStartScreenViewController.h */,
 				1F0A85A715F73ABF0026FA28 /* ProjectStartScreenViewController.m */,
 				1FC93AA515D698DB0004194B /* CreateProjectViewController.h */,
@@ -267,6 +288,16 @@
 				1F0A85AF15F767140026FA28 /* ImportProjectViewController.m */,
 				1F0A85B115F84D1F0026FA28 /* ProjectSettingsViewController.h */,
 				1F0A85B215F84D200026FA28 /* ProjectSettingsViewController.m */,
+				1F99A8AF16428A5400D3D628 /* TaskListViewController.h */,
+				1F99A8B016428A5400D3D628 /* TaskListViewController.m */,
+				1F99A8B216428C3500D3D628 /* TaskListTableViewDesign.h */,
+				1F99A8B316428C3500D3D628 /* TaskListTableViewDesign.m */,
+				1F99A8BE1645363200D3D628 /* TaskDetailViewController.h */,
+				1F99A8BF1645363200D3D628 /* TaskDetailViewController.m */,
+				1F99A8C1164541BA00D3D628 /* CheckBox.h */,
+				1F99A8C2164541BA00D3D628 /* CheckBox.m */,
+				1F99A8BB1645340600D3D628 /* IndentedUILabel.h */,
+				1F99A8BC1645340600D3D628 /* IndentedUILabel.m */,
 				1F40455D15C2B10200805635 /* Supporting Files */,
 				1FC93AAC15D783030004194B /* ProjectDetailsViewController.h */,
 				1FC93AAD15D783030004194B /* ProjectDetailsViewController.m */,
@@ -311,6 +342,8 @@
 				1FCF5E4B15E60BF400BA631C /* button_enabled.png */,
 				1FCF5E4C15E60BF500BA631C /* button_pressed.png */,
 				1FCF5E4D15E60BF600BA631C /* button_selected.png */,
+				1F99A8C41645461100D3D628 /* checkbox_ticked.jpg */,
+				1F99A8C51645461100D3D628 /* checkbox_unticked.jpg */,
 				1FCF5E4E15E60BF600BA631C /* import_project.png */,
 				1FCF5E4F15E60BF700BA631C /* new_project.png */,
 				1FCF5E5015E60BF900BA631C /* open_project.png */,
@@ -442,6 +475,12 @@
 				1FCF5E5615E60BFB00BA631C /* new_project.png in Resources */,
 				1FCF5E5715E60BFB00BA631C /* open_project.png in Resources */,
 				1FCF5E5915EAFD6D00BA631C /* WYSIWYA-Main.storyboard in Resources */,
+				1F99A8C61645461100D3D628 /* checkbox_ticked.jpg in Resources */,
+				1F99A8C71645461100D3D628 /* checkbox_unticked.jpg in Resources */,
+				1F99A8C91646373000D3D628 /* background_create_project.png in Resources */,
+				1F99A8CD164687CA00D3D628 /* background_task_details.jpg in Resources */,
+				1F99A8CE164687CA00D3D628 /* checkbox_ticked.png in Resources */,
+				1F99A8CF164687CA00D3D628 /* checkbox_unticked.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,9 +539,12 @@
 				1F0A85B315F84D200026FA28 /* ProjectSettingsViewController.m in Sources */,
 				1FEF04A1161BC34F000A9830 /* RemoteDataController.m in Sources */,
 				1FEF04AA161C219B000A9830 /* LoadProgressViewController.m in Sources */,
-				1FD0B0E4163E0F8D0030F286 /* TaskListPortraitViewController.m in Sources */,
-				1FD0B0E7163E0FC40030F286 /* TaskListLandscapeViewController.m in Sources */,
 				1FD0B0EA163E7FEE0030F286 /* SharedData.m in Sources */,
+				1F99A8B116428A5400D3D628 /* TaskListViewController.m in Sources */,
+				1F99A8B416428C3500D3D628 /* TaskListTableViewDesign.m in Sources */,
+				1F99A8BD1645340600D3D628 /* IndentedUILabel.m in Sources */,
+				1F99A8C01645363200D3D628 /* TaskDetailViewController.m in Sources */,
+				1F99A8C3164541BA00D3D628 /* CheckBox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
