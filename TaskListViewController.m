@@ -8,19 +8,31 @@
 
 #import "TaskListViewController.h"
 #import "Task.h"
+#import "Project.h"
 #import "SharedData.h"
 #import "CoreDataController.h"
 #import "TaskListTableViewDesign.h"
+#import "TaskDetailViewController.h"
 #import "IndentedUILabel.h"
+#import "TaskCellView.h"
 
 
 @interface TaskListViewController ()
+{
+    
+    int _tableWidth;
+    
+}
+
+@property (strong, nonatomic) UIPopoverController* popover;
 
 - (void)configureCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
 @implementation TaskListViewController
+
+@synthesize popover;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -33,8 +45,13 @@
 
 - (void)viewDidLoad
 {
+    
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+	self.title = [SharedData sharedInstance].activeProject.projectName;
+    _tableWidth = 769;
+    
+    //TODO: set table view width & scroll view width
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -48,18 +65,20 @@
 
     [super viewWillAppear:animated];
     
-    //checks if a row is selected...
+        //checks if a row is selected...
     if ([self.taskTableView indexPathForSelectedRow]) {
         
-        //if yes, then set the selectedTask property to that row
+            //if yes, then set the selectedTask property to that row
         self.selectedTask = (Task*)[[SharedData sharedInstance].taskController objectInListAtIndex:[[self.taskTableView indexPathForSelectedRow] row]];
         
     } else {
         
-        //no item selected, select top item
+            //no item selected, select top item
         [self.taskTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
-        //call didSelectRowAtIndexPath, as it's not called when selection is made prgrammatically
+            //call didSelectRowAtIndexPath, as it's not called when selection is made prgrammatically
         [self tableView:self.taskTableView didSelectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]];
+            //and set self.selectedTask
+        self.selectedTask = (Task*)[[SharedData sharedInstance].taskController objectInListAtIndex:[[self.taskTableView indexPathForSelectedRow] row]];
         
     }
 }
@@ -86,7 +105,7 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
+    TaskCellView* cell = [tableView dequeueReusableCellWithIdentifier:@"TaskCell"];
     [self configureCell:cell atIndexPath:indexPath];
     return cell;
 
@@ -217,19 +236,114 @@
     }
 }
 
-- (void)configureCell:(UITableViewCell*)cell atIndexPath:(NSIndexPath*)indexPath
+- (void)configureCell:(TaskCellView*)cell atIndexPath:(NSIndexPath*)indexPath
 {
     
     Task* task = (Task*)[[SharedData sharedInstance].taskController objectAtIndexPath:indexPath];
     
-    UIImageView* taskStatusImage = (UIImageView*)[cell viewWithTag:0];
-    UILabel* wbsLabel = (UILabel*)[cell viewWithTag:1];
-    IndentedUILabel* nameLabel = (IndentedUILabel*)[cell viewWithTag:2];
+    int rowNumber = indexPath.row;
+    int maxRows = [[SharedData sharedInstance].taskController numberOfObjectsInSection:indexPath.section];
     
-    taskStatusImage.image = [UIImage imageNamed:@"grey_light.png"];
-    wbsLabel.text = task.wbs;
-    nameLabel.indention = task.level*3;
-    nameLabel.text = task.taskName;
+    NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
+    [dateFormatter setDateFormat:@"dd-MM-yy hh:mm"];
+    
+    cell.wbsLabel.text          = task.formattedWbs;
+    cell.statusIcon.image       = [UIImage imageNamed:@"grey_light.png"];
+    cell.taskNameLabel.text     = task.taskName;
+    cell.taskNameLabel.indention= task.level*3;
+    cell.pctCompleteLabel.text  = [NSString stringWithFormat:@"%d", task.pctComplete];
+    cell.startDateLabel.text    = [dateFormatter stringFromDate:task.startDate];
+    cell.endDateLabel.text      = [dateFormatter stringFromDate:task.endDate];
+    cell.effortLabel.text       = [NSString stringWithFormat:@"%d", task.effortComplete];
+    cell.assignedToLabel.text   = task.assignedTo;
+    
+    //set width of mid-background cell
+    
+    CGRect frame = [cell.midSection frame];
+    frame.size.width = _tableWidth - 60;
+    [cell.midSection setFrame:frame];
+    
+    //check if cell is first or last or neither, then check if selected or not
+    
+    if (0 < rowNumber < maxRows) {
+        //row is neither first nor last
+        
+        //check if cell is selected
+        if (cell.isSelected) {
+            
+            cell.leftBorder.image = [UIImage imageNamed:@"cell_left_highlight.png"];
+            cell.midSection.image = [UIImage imageNamed:@"cell_mid_highlight.png"];
+            cell.rightBorder.image = [UIImage imageNamed:@"cell_right_highlight.png"];
+            
+        } else {
+            
+            if (rowNumber % 2) {
+
+                cell.leftBorder.image = [UIImage imageNamed:@"cell_left_white.png"];
+                cell.midSection.image = [UIImage imageNamed:@"cell_mid_white.png"];
+                cell.rightBorder.image = [UIImage imageNamed:@"cell_right_white.png"];
+                
+            } else {
+                
+                cell.leftBorder.image = [UIImage imageNamed:@"cell_left_grey.png"];
+                cell.midSection.image = [UIImage imageNamed:@"cell_mid_grey.png"];
+                cell.rightBorder.image = [UIImage imageNamed:@"cell_right_grey.png"];
+                
+            }
+            
+        }
+
+        
+    } else if (rowNumber == 0) {
+        
+        //row is first
+        
+        //check if cell is selected
+        if (cell.isSelected) {
+            
+            cell.leftBorder.image = [UIImage imageNamed:@"cell_topleft_highlight.png"];
+            cell.midSection.image = [UIImage imageNamed:@"cell_topmid_highlight.png"];
+            cell.rightBorder.image = [UIImage imageNamed:@"cell_topright_highlight.png"];
+            
+        } else {
+            
+            cell.leftBorder.image = [UIImage imageNamed:@"cell_topleft_grey.png"];
+            cell.midSection.image = [UIImage imageNamed:@"cell_topmid_grey.png"];
+            cell.rightBorder.image = [UIImage imageNamed:@"cell_topright_grey.png"];
+                        
+        }
+        
+        
+    } else {
+        
+        //row is last
+        
+        //check if cell is selected
+        if (cell.isSelected) {
+            
+            cell.leftBorder.image = [UIImage imageNamed:@"cell_bottomleft_highlight.png"];
+            cell.midSection.image = [UIImage imageNamed:@"cell_bottommid_highlight.png"];
+            cell.rightBorder.image = [UIImage imageNamed:@"cell_bottomright_highlight.png"];
+            
+        } else {
+            
+            if (rowNumber % 2) {
+                
+                cell.leftBorder.image = [UIImage imageNamed:@"cell_bottomleft_white.png"];
+                cell.midSection.image = [UIImage imageNamed:@"cell_bottommid_white.png"];
+                cell.rightBorder.image = [UIImage imageNamed:@"cell_bottomright_white.png"];
+                
+            } else {
+                
+                cell.leftBorder.image = [UIImage imageNamed:@"cell_bottomleft_grey.png"];
+                cell.midSection.image = [UIImage imageNamed:@"cell_bottommid_grey.png"];
+                cell.rightBorder.image = [UIImage imageNamed:@"cell_bottomright_grey.png"];
+                
+            }
+            
+        }
+        
+    }
     
     //if edit mode is on
     //cell.showsReorderControl = YES;
@@ -247,10 +361,22 @@
 }
 
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    
+    if ([[segue identifier] isEqualToString:@"ShowTaskDetails"]) {
+        
+        self.popover = [(UIStoryboardPopoverSegue *)segue popoverController];
+        TaskDetailViewController* taskDetailController = (TaskDetailViewController*)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        taskDetailController.delegate = self;
+        
+    }
+
+}
 
 //addTask: create a task with default values then open the pop-up where user can modify values accordingly
 
-- (IBAction)addTask:(id)sender
+- (IBAction) addTask:(id)sender
 {
     
     //get selected object as an anchor to know where new task will be added
@@ -263,12 +389,18 @@
     Task* newTask = (Task*)[[SharedData sharedInstance].taskController createObject:@"Task"];
     
     newTask.taskName = @"new Task";
+    newTask.taskDescription = @"";
     newTask.startDate = [NSDate date];
     newTask.endDate = [NSDate date];
     newTask.duration = 480;
     newTask.effort = 480;
     newTask.effortComplete = 0;
     newTask.isMilestone = NO;
+    newTask.isFinished = NO;
+    newTask.hasStarted = NO;
+    newTask.dynamicScheduling = NO;
+    newTask.uid = [NSString stringWithFormat:@"%@%d", selectedTask.project.uid, selectedTask.project.taskUidCounter];
+    selectedTask.project.taskUidCounter++;
     
     //update all relevant WBS i.e. make "space" for new item
     [selectedTask reorderForInsertAfter];
@@ -300,15 +432,26 @@
     //save context and reload table, selecting new task
     
     [[SharedData sharedInstance].taskController saveContext];
+    [SharedData sharedInstance].activeTask = newTask;
     [self.taskTableView reloadData];
     [self.taskTableView selectRowAtIndexPath:updatedIndexPath animated:YES scrollPosition:UITableViewScrollPositionMiddle];
     
     //load pop-up to allow customization of task properties
-    xxx
-
+    [self performSegueWithIdentifier:@"ShowTaskDetails" sender:self];
+    
     
 }
 
-- (IBAction)editMode:(id)sender {
+- (IBAction) editMode:(id)sender {
+    
+    
 }
+
+- (void)popoverDidComplete
+{
+    
+    [self.popover dismissPopoverAnimated:YES];
+    
+}
+     
 @end

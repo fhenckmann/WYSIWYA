@@ -10,11 +10,12 @@
 
 @class Project;
 @class CoreDataController;
-
+@class Task;
 
 @interface SharedData : NSObject
 
 @property (nonatomic, retain) Project* activeProject;
+@property (nonatomic, retain) Task* activeTask;
 @property (nonatomic, readonly, retain) CoreDataController* projectController;
 @property (nonatomic, readonly, retain) CoreDataController* taskController;
 @property (nonatomic, readonly, retain) CoreDataController* remoteProjectController;

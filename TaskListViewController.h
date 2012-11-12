@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaskDetailViewController.h"
 
 @class Task;
 @class TaskListTableViewDesign;
 
-@interface TaskListViewController : UIViewController <UITableViewDataSource>
+
+
+@interface TaskListViewController : UIViewController <UITableViewDataSource, TaskDetailViewControllerDelegate>
 
 @property (strong, nonatomic) Task* selectedTask;
 @property (weak, nonatomic) IBOutlet TaskListTableViewDesign *taskTableView;
@@ -19,8 +22,9 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBox;
 @property (weak, nonatomic) IBOutlet UINavigationBar *titleBar;
 
-- (IBAction)addTask:(id)sender;
-- (IBAction)editMode:(id)sender;
+- (IBAction) addTask:(id)sender;
+- (IBAction) editMode:(id)sender;
+- (void) popoverDidComplete;
 
 
 @end

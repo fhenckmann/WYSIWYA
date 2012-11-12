@@ -8,7 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol TaskDetailViewControllerDelegate; 
+
 @interface TaskDetailViewController : UIViewController
+
+@property (weak, nonatomic) id <TaskDetailViewControllerDelegate> delegate;
+
 @property (weak, nonatomic) IBOutlet UILabel *wbsLabel;
 @property (weak, nonatomic) IBOutlet UITextField *taskNameField;
 @property (weak, nonatomic) IBOutlet UITextView *taskDetailsField;
@@ -22,6 +27,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *scheduleTypeLabel;
 
 
+@property (nonatomic) BOOL hasStarted;
+@property (nonatomic) BOOL isFinished;
 
 
 - (IBAction)updatePctComplete:(id)sender;
@@ -31,6 +38,10 @@
 - (IBAction)showResources:(id)sender;
 - (IBAction)showPredecessors:(id)sender;
 
+@end
 
+@protocol TaskDetailViewControllerDelegate <NSObject>
+
+- (void) popoverDidComplete;
 
 @end

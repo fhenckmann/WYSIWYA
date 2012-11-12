@@ -46,16 +46,6 @@
     self.inputStartDate.inputView = self.datePicker;
     self.inputEndDate.inputView = self.datePicker;
     
-    //create buttons
-    self.cancelButton = [[UIBarButtonItem alloc] initWithTitle:@"Cancel" style:UIBarButtonItemStyleBordered target:self action:@selector(cancel:)];
-    self.navigationItem.leftBarButtonItem = self.cancelButton;
-    
-    self.doneButton = [[UIBarButtonItem alloc] initWithTitle:@"Done Typing" style:UIBarButtonItemStyleBordered target:self action:@selector(doneEditing:)];
-    self.navigationItem.rightBarButtonItem = self.doneButton;
-    [self.inputProjectName becomeFirstResponder];
-    
-    self.createProjectButton = [[UIBarButtonItem alloc] initWithTitle:@"Create Project" style:UIBarButtonItemStyleBordered target:self action:@selector(createProject:)];
-    
 
 }
 
@@ -96,50 +86,7 @@
 }
 
 
-- (IBAction)doneEditing:(id)sender
-{
-    
-    if ([self.inputStartDate isFirstResponder]) {
-        
-        [self.inputStartDate resignFirstResponder];
-        
-    } else if ([self.inputEndDate isFirstResponder]) {
-        
-        [self.inputEndDate resignFirstResponder];
-        
-    } else if ([self.inputProjectName isFirstResponder]) {
-        
-        [self.inputProjectName resignFirstResponder];
-        
-    } else if ([self.inputProjectDescription isFirstResponder]) {
-        
-        [self.inputProjectDescription resignFirstResponder];
-        
-    }
-    
-    self.navigationItem.rightBarButtonItem = self.createProjectButton;
-    
-}
-
 - (IBAction)createProject:(id)sender {
-    
-    if ([self.inputStartDate isFirstResponder]) {
-        
-        [self.inputStartDate resignFirstResponder];
-        
-    } else if ([self.inputEndDate isFirstResponder]) {
-        
-        [self.inputEndDate resignFirstResponder];
-        
-    } else if ([self.inputProjectName isFirstResponder]) {
-        
-        [self.inputProjectName resignFirstResponder];
-        
-    } else if ([self.inputProjectDescription isFirstResponder]) {
-        
-        [self.inputProjectDescription resignFirstResponder];
-        
-    } else      
     
     if ([self.inputProjectName.text length]) {
         
@@ -151,6 +98,8 @@
         newProject.lastModified = [NSDate date];
         newProject.projectStart = [NSDate date];
         newProject.projectFinish = [NSDate date];
+        newProject.uid = [NSString stringWithFormat:@"%f",[NSDate timeIntervalSinceReferenceDate]];
+        newProject.taskUidCounter = 1;
         
         //save one main task with project
         Task* newTask = (Task*)[[SharedData sharedInstance].taskController createObject:@"Task"];
@@ -191,6 +140,11 @@
         [self.delegate loadProject];
 
         
+    } else {
+        
+        UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Provide Project Name" message:@"Please provide a project name before creating the project." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        
     }
     
     
@@ -214,34 +168,34 @@
     }
 }
 
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    
-    
-    //this doesn't work - instead we have to create two buttons and assign them alternatingly to the right side of the nav bar
-    
-    self.navigationItem.rightBarButtonItem = self.doneButton;
-    self.navigationItem.leftBarButtonItem = nil;
-    
-    
-}
-
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    
-    self.navigationItem.rightBarButtonItem = self.createProjectButton;
-    self.navigationItem.leftBarButtonItem = self.cancelButton;
-    
-    
-}
 
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
         
-    [textField resignFirstResponder];
-
+    if ([self.inputProjectName isFirstResponder]) {
+        
+        [self.inputProjectName resignFirstResponder];
+        [self.inputProjectDescription becomeFirstResponder];
+        
+    } else if ([self.inputProjectDescription isFirstResponder]) {
+        
+        [self.inputProjectDescription resignFirstResponder];
+        [self.inputStartDate becomeFirstResponder];
+        
+    }
     
-    return YES;
+    
+    return NO;
+    
+}
+
+//don't allow the popover to be dismissed when clicking outside the window
+
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController
+{
+    
+    return NO;
     
 }
 

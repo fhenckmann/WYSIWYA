@@ -12,7 +12,7 @@
 
 @protocol CreateProjectViewControllerDelegate;
 
-@interface CreateProjectViewController : UIViewController <UITextFieldDelegate>
+@interface CreateProjectViewController : UIViewController <UITextFieldDelegate, UIPopoverControllerDelegate>
 
 
 @property (weak, nonatomic) id <CreateProjectViewControllerDelegate> delegate;
@@ -22,15 +22,12 @@
 @property (weak, nonatomic) IBOutlet UITextField *inputEndDate;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *saveButton;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-@property (weak, nonatomic) UIBarButtonItem* cancelButton;
-@property (weak, nonatomic) UIBarButtonItem* doneButton;
-@property (weak, nonatomic) UIBarButtonItem* createProjectButton;
+
 
 - (IBAction)dateChanged:(id)sender;
-
+- (BOOL)popoverControllerShouldDismissPopover:(UIPopoverController *)popoverController;
 - (IBAction)cancel:(id)sender;
 - (IBAction)createProject:(id)sender;
-- (IBAction)doneEditing:(id)sender;
 
 @end
 

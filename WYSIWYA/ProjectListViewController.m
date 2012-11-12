@@ -295,19 +295,24 @@
 
 - (void) configureCellAtIndexPath:(NSIndexPath*)indexPath
 {
+    
     NSLog(@"Data controller called view's configureCellAtIndexPath method for section %d and row %d", indexPath.section, indexPath.row);
     [self configureCell:[self.tableView cellForRowAtIndexPath:indexPath] atIndexPath:indexPath];
+
 }
 
 
 - (void) beginUpdates
 {
+    
     [self.tableView beginUpdates];
+
 }
 
 
 - (void) endUpdates
 {
+    
     [self.tableView endUpdates];
     
 }

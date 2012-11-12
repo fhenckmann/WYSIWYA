@@ -333,6 +333,15 @@
     
 }
 
+- (void) rollback
+{
+    
+    // roll back to last saved state, discarding all changes
+    
+    [self.managedObjectContext rollback];
+    
+}
+
 - (NSError*) deleteObject:(NSManagedObject *)object
 {
     

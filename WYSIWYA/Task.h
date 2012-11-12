@@ -23,6 +23,7 @@
 @property (nonatomic) BOOL isMilestone;
 @property (nonatomic) BOOL hasStarted;
 @property (nonatomic) BOOL isFinished;
+@property (nonatomic) BOOL dynamicScheduling;
 @property (nonatomic, retain) NSDate* startDate;
 @property (nonatomic, retain) NSString * taskDescription;
 @property (nonatomic, retain) NSString * taskName;
@@ -39,6 +40,7 @@
 @property (nonatomic, readonly, getter = isFirstChild) BOOL firstChild;
 @property (nonatomic, readonly, getter = isFinished) BOOL finished;
 @property (nonatomic, retain, readonly) NSString* formattedWbs;
+@property (nonatomic, retain, readonly) NSString* assignedTo;
 @property (nonatomic) int pctComplete;
 
 + (NSString*) generateWbsFromPosition:(NSArray*)inputPosition;

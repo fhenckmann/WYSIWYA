@@ -18,9 +18,9 @@
 @interface ProjectListViewController : UITableViewController <RemoteDataControllerDelegate>
 
 @property (weak, nonatomic) id <ProjectListViewControllerDelegate> delegate;
-@property (weak, nonatomic) UIBarButtonItem* cancelButton;
-@property (weak, nonatomic) UIBarButtonItem* selectButton;
-@property (weak, nonatomic) UIBarButtonItem* cancelDeleteButton;
+@property (strong, nonatomic) UIBarButtonItem* cancelButton;
+@property (strong, nonatomic) UIBarButtonItem* selectButton;
+@property (strong, nonatomic) UIBarButtonItem* cancelDeleteButton;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *sourceSelector;
 
 - (IBAction)cancel:(id)sender;

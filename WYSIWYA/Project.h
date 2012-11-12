@@ -17,7 +17,7 @@
 @interface Project : NSManagedObject
 
 @property (nonatomic, retain) NSString* uid;
-@property (nonatomic) int16_t* taskUidCounter;
+@property (nonatomic) int16_t taskUidCounter;
 @property (nonatomic, retain) NSDate* creationDate;
 @property (nonatomic, retain) NSDate* lastModified;
 @property (nonatomic, retain) NSString* projectDescription;

@@ -19,6 +19,10 @@
 
 @interface ProjectStartScreenViewController ()
 
+{
+    
+}
+
 
 @property (strong, nonatomic) UIPopoverController* popover;
 
@@ -82,12 +86,11 @@
         ImportProjectViewController* importProjectController = (ImportProjectViewController*)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
         importProjectController.delegate = self;
         
-        
     }
     
     if ([[segue identifier] isEqualToString:@"ShowTabBar"]) {
         
-        ProjectSettingsViewController* projectSettingsController = (ProjectSettingsViewController*)[[[segue destinationViewController] viewControllers] objectAtIndex:0];        
+        //really not much to do
         
     }
 }
@@ -99,6 +102,8 @@
     [self.popover dismissPopoverAnimated:YES];
     
 }
+
+
 
 - (void)loadProject
 {

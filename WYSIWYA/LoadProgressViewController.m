@@ -36,9 +36,17 @@
 }
 
 - (IBAction)cancelLoad:(id)sender {
+    
+    
 }
-- (void)viewDidUnload {
+
+
+- (void)viewDidUnload
+{
+    
     [self setProgressBar:nil];
     [super viewDidUnload];
+
 }
+
 @end

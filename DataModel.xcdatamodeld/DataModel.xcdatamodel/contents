@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1487" systemVersion="12B19" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C60" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Attribute" representedClassName="Attribute" syncable="YES">
         <attribute name="attributeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="possibleValues" optional="YES" attributeType="String" syncable="YES"/>
@@ -33,7 +33,7 @@
         <relationship name="roles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Role" inverseName="resources" inverseEntity="Role" syncable="YES"/>
         <relationship name="tasks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="TaskRoleAllocation" syncable="YES"/>
     </entity>
-    <entity name="Role" syncable="YES">
+    <entity name="Role" representedClassName="Role" syncable="YES">
         <attribute name="isInternal" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="roleName" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ancestor" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Role" inverseName="children" inverseEntity="Role" syncable="YES"/>
@@ -44,6 +44,7 @@
     </entity>
     <entity name="Task" representedClassName="Task" syncable="YES">
         <attribute name="duration" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="dynamicScheduling" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="effort" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="effortComplete" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="endDate" optional="YES" attributeType="Date" syncable="YES"/>
@@ -85,7 +86,7 @@
         <element name="ProjectSettings" positionX="0" positionY="0" width="128" height="75"/>
         <element name="Resource" positionX="0" positionY="0" width="128" height="165"/>
         <element name="Role" positionX="0" positionY="0" width="128" height="150"/>
-        <element name="Task" positionX="0" positionY="0" width="128" height="345"/>
+        <element name="Task" positionX="0" positionY="0" width="128" height="360"/>
         <element name="TaskActionTracking" positionX="0" positionY="0" width="128" height="75"/>
         <element name="TaskAttributeAllocation" positionX="0" positionY="0" width="128" height="90"/>
         <element name="TaskRoleAllocation" positionX="0" positionY="0" width="128" height="90"/>

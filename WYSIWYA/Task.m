@@ -11,6 +11,8 @@
 #import "Task.h"
 #import "TaskAttributeAllocation.h"
 #import "TaskResourceAllocation.h"
+#import "Role.h"
+#import "Resource.h"
 
 @interface Task()
 
@@ -29,6 +31,7 @@
 }
 
 @dynamic duration;
+@dynamic dynamicScheduling;
 @dynamic effort;
 @dynamic effortComplete;
 @dynamic endDate;
@@ -55,6 +58,7 @@
 @synthesize lastLevelPosition = _lastLevelPosition;
 @synthesize formattedWbs = _formattedWbs;
 @synthesize finished = _finished;
+@synthesize assignedTo = _assignedTo;
 
 
 + (NSString*)generateWbsFromPosition:(NSArray *)inputPosition
@@ -114,13 +118,7 @@
 }
 
 
-- (BOOL) isFinished
-{
-    
-    return (self.effort == self.effortComplete);
-    
-}
-
+//changing the percentage complete will update the effort complete, as pctComplete is not stored in managed object
 
 - (void) setPctComplete:(int) percentage
 {
@@ -172,6 +170,40 @@
         
     }
     
+    
+}
+
+- (NSString*) assignedTo
+{
+    
+    if (_assignedTo) {
+        
+        return _assignedTo;
+        
+    } else {
+     
+        for (Role* role in self.roles) {
+            
+            //check if role has resources assigned. If so, add resources to assignedTo, otherwise use role name
+            
+            if (role.resources.count) {
+                
+                for (Resource* resource in role.resources) {
+                    
+                    _assignedTo = [NSString stringWithFormat:@"%@, %@ %@", _assignedTo, resource.firstName, resource.lastName];
+                }
+                
+            } else {
+                
+                _assignedTo = [NSString stringWithFormat:@"%@, %@", _assignedTo, role.roleName];
+            }
+            
+            
+        }
+        
+        return _assignedTo;
+        
+    }
     
 }
 

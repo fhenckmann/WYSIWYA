@@ -30,6 +30,7 @@
 - (NSManagedObject*) objectPreceding: (NSManagedObject*) object;
 - (NSIndexPath*) indexPathOfObject: (NSManagedObject*) object;
 - (NSManagedObject*) createObject: (NSString*) entity;
+- (void) rollback;
 - (NSError*) saveContext;
 - (NSError*) deleteObject: (NSManagedObject*) object;
 - (NSError*) deleteAll;

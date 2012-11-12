@@ -12,7 +12,7 @@
 
 @interface ProjectSettingsViewController : UIViewController
 
-@property (strong,nonatomic) CoreDataController* dataController;
+@property (strong, nonatomic) CoreDataController* dataController;
 @property (strong, nonatomic) Project* activeProject;
 
 
