@@ -103,6 +103,10 @@
 		1FFB62E5164FC35E009BFDC8 /* cell_topright_grey.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB62CD164FC35D009BFDC8 /* cell_topright_grey.png */; };
 		1FFB62E6164FC35E009BFDC8 /* cell_topright_highlight.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB62CE164FC35E009BFDC8 /* cell_topright_highlight.png */; };
 		1FFB62E9165122B6009BFDC8 /* Role.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFB62E8165122B5009BFDC8 /* Role.m */; };
+		1FFB62ED1653A971009BFDC8 /* button_delete.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB62EA1653A96F009BFDC8 /* button_delete.png */; };
+		1FFB62EE1653A971009BFDC8 /* button_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB62EB1653A96F009BFDC8 /* button_info.png */; };
+		1FFB62EF1653A971009BFDC8 /* button_new.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB62EC1653A970009BFDC8 /* button_new.png */; };
+		1FFB62F11653C3C9009BFDC8 /* slider.png in Resources */ = {isa = PBXBuildFile; fileRef = 1FFB62F01653C3C9009BFDC8 /* slider.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +249,10 @@
 		1FFB62CE164FC35E009BFDC8 /* cell_topright_highlight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cell_topright_highlight.png; sourceTree = "<group>"; };
 		1FFB62E7165122B5009BFDC8 /* Role.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Role.h; sourceTree = "<group>"; };
 		1FFB62E8165122B5009BFDC8 /* Role.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Role.m; sourceTree = "<group>"; };
+		1FFB62EA1653A96F009BFDC8 /* button_delete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_delete.png; sourceTree = "<group>"; };
+		1FFB62EB1653A96F009BFDC8 /* button_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_info.png; sourceTree = "<group>"; };
+		1FFB62EC1653A970009BFDC8 /* button_new.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_new.png; sourceTree = "<group>"; };
+		1FFB62F01653C3C9009BFDC8 /* slider.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = slider.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -387,6 +395,10 @@
 		1F40455D15C2B10200805635 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1FFB62F01653C3C9009BFDC8 /* slider.png */,
+				1FFB62EA1653A96F009BFDC8 /* button_delete.png */,
+				1FFB62EB1653A96F009BFDC8 /* button_info.png */,
+				1FFB62EC1653A970009BFDC8 /* button_new.png */,
 				1FFB62B7164FC356009BFDC8 /* cell_bottmmid_grey.png */,
 				1FFB62B8164FC356009BFDC8 /* cell_bottomleft_grey.png */,
 				1FFB62B9164FC356009BFDC8 /* cell_bottomleft_highlight.png */,
@@ -582,6 +594,10 @@
 				1FFB62E4164FC35E009BFDC8 /* cell_topmid_highlight.png in Resources */,
 				1FFB62E5164FC35E009BFDC8 /* cell_topright_grey.png in Resources */,
 				1FFB62E6164FC35E009BFDC8 /* cell_topright_highlight.png in Resources */,
+				1FFB62ED1653A971009BFDC8 /* button_delete.png in Resources */,
+				1FFB62EE1653A971009BFDC8 /* button_info.png in Resources */,
+				1FFB62EF1653A971009BFDC8 /* button_new.png in Resources */,
+				1FFB62F11653C3C9009BFDC8 /* slider.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,6 +21,8 @@
 {
     
     int _tableWidth;
+    int _initialX;
+    int _initialY;
     
 }
 
@@ -47,10 +49,39 @@
 {
     
     [super viewDidLoad];
-	self.title = [SharedData sharedInstance].activeProject.projectName;
-    _tableWidth = 769;
+    _tableWidth = 780;
+    NSLog(@"Width of table view: %d", _tableWidth);
     
-    //TODO: set table view width & scroll view width
+    //set table view
+    CGRect frame = [self.taskTableView frame];
+    frame.size.width = _tableWidth;
+    frame.origin.x = 0;
+    [self.taskTableView setFrame:frame];
+    NSLog(@"Initialising TaskListView:");
+    NSLog(@"Table view: x=%f, y=%f, width=%f, height=%f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    
+    //set divider
+    frame = [self.dragBarView frame];
+    frame.origin.x = _tableWidth - (frame.size.width / 2);
+    [self.dragBarView setFrame:frame];
+    NSLog(@"Drag bar view: x=%f, y=%f, width=%f, height=%f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    
+    //set graph view
+    frame = [self.graphView frame];
+    frame.size.width = 1024 - 4 - _tableWidth;
+    frame.origin.x = 1024 - frame.size.width;
+    [self.graphView setFrame:frame];
+        NSLog(@"Graph view: x=%f, y=%f, width=%f, height=%f", frame.origin.x, frame.origin.y, frame.size.width, frame.size.height);
+    
+    //update the table header
+    
+    frame = [self.midHeaderImage frame];
+    frame.size.width = _tableWidth - 60;
+    [self.midHeaderImage setFrame:frame];
+    frame = [self.rightHeaderImage frame];
+    frame.origin.x = _tableWidth - 30;
+    [self.rightHeaderImage setFrame:frame];
+    
     
 }
 
@@ -68,10 +99,14 @@
         //checks if a row is selected...
     if ([self.taskTableView indexPathForSelectedRow]) {
         
+        NSLog(@"viewWillAppear identified that row %d is selected", [self.taskTableView indexPathForSelectedRow].row);
+        
             //if yes, then set the selectedTask property to that row
         self.selectedTask = (Task*)[[SharedData sharedInstance].taskController objectInListAtIndex:[[self.taskTableView indexPathForSelectedRow] row]];
         
     } else {
+        
+        NSLog(@"viewWillAppear identified that no row is currently selected.");
         
             //no item selected, select top item
         [self.taskTableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
@@ -188,9 +223,15 @@
 {
 
     Task* selectedTask = (Task*)[[SharedData sharedInstance].taskController objectAtIndexPath:indexPath];
-    //setting the detail view object
-    //self.detailViewController.detailItem = selectedTask;
     self.selectedTask = selectedTask;
+    [SharedData sharedInstance].activeTask = selectedTask;
+    
+    NSLog(@"Aha! User has selected row %d", indexPath.row);
+    
+    [self.taskTableView reloadRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+    //[self tableView:tableView cellForRowAtIndexPath:indexPath];
+    
     
     /*
     
@@ -242,30 +283,49 @@
     Task* task = (Task*)[[SharedData sharedInstance].taskController objectAtIndexPath:indexPath];
     
     int rowNumber = indexPath.row;
-    int maxRows = [[SharedData sharedInstance].taskController numberOfObjectsInSection:indexPath.section];
+    int maxRows = [[SharedData sharedInstance].taskController numberOfObjectsInSection:indexPath.section] - 1;
+    
+    if (rowNumber == [self.taskTableView indexPathForSelectedRow].row) {
+        cell.selected = true;
+    } else {
+        cell.selected = false;
+    }
+    
+    NSLog(@"Drawing row %d of a total of %d plus one rows. Row is selected: %@", rowNumber, maxRows, cell.isSelected?@"YES":@"NO");
     
     NSDateFormatter* dateFormatter = [[NSDateFormatter alloc]init];
     [dateFormatter setDateFormat:@"dd-MM-yy hh:mm"];
     
     cell.wbsLabel.text          = task.formattedWbs;
-    cell.statusIcon.image       = [UIImage imageNamed:@"grey_light.png"];
+    cell.statusIcon.image       = [UIImage imageNamed:@"icon_status_grey.png"];
     cell.taskNameLabel.text     = task.taskName;
-    cell.taskNameLabel.indention= task.level*3;
+    cell.taskNameLabel.indention= task.level*8;
     cell.pctCompleteLabel.text  = [NSString stringWithFormat:@"%d", task.pctComplete];
     cell.startDateLabel.text    = [dateFormatter stringFromDate:task.startDate];
     cell.endDateLabel.text      = [dateFormatter stringFromDate:task.endDate];
     cell.effortLabel.text       = [NSString stringWithFormat:@"%d", task.effortComplete];
     cell.assignedToLabel.text   = task.assignedTo;
     
-    //set width of mid-background cell
+    cell.wbsLabel.highlightedTextColor = [UIColor blackColor];
+    cell.taskNameLabel.highlightedTextColor = [UIColor blackColor];
+    cell.pctCompleteLabel.highlightedTextColor = [UIColor blackColor];
+    cell.startDateLabel.highlightedTextColor = [UIColor blackColor];
+    cell.endDateLabel.highlightedTextColor = [UIColor blackColor];
+    cell.effortLabel.highlightedTextColor = [UIColor blackColor];
+    cell.assignedToLabel.highlightedTextColor = [UIColor blackColor];
+    
+    //set width of mid-background cell and x-position of right border
     
     CGRect frame = [cell.midSection frame];
     frame.size.width = _tableWidth - 60;
     [cell.midSection setFrame:frame];
+    frame = [cell.rightBorder frame];
+    frame.origin.x = _tableWidth - 30;
+    [cell.rightBorder setFrame:frame];
     
-    //check if cell is first or last or neither, then check if selected or not
+    //check if cell is last cell
     
-    if (0 < rowNumber < maxRows) {
+    if (rowNumber < maxRows) {
         //row is neither first nor last
         
         //check if cell is selected
@@ -292,27 +352,6 @@
             }
             
         }
-
-        
-    } else if (rowNumber == 0) {
-        
-        //row is first
-        
-        //check if cell is selected
-        if (cell.isSelected) {
-            
-            cell.leftBorder.image = [UIImage imageNamed:@"cell_topleft_highlight.png"];
-            cell.midSection.image = [UIImage imageNamed:@"cell_topmid_highlight.png"];
-            cell.rightBorder.image = [UIImage imageNamed:@"cell_topright_highlight.png"];
-            
-        } else {
-            
-            cell.leftBorder.image = [UIImage imageNamed:@"cell_topleft_grey.png"];
-            cell.midSection.image = [UIImage imageNamed:@"cell_topmid_grey.png"];
-            cell.rightBorder.image = [UIImage imageNamed:@"cell_topright_grey.png"];
-                        
-        }
-        
         
     } else {
         
@@ -354,9 +393,14 @@
 - (void)viewDidUnload
 {
     [self setTaskTableView:nil];
-    [self setColumnSizeSlider:nil];
-    [self setSearchBox:nil];
-    [self setTitleBar:nil];
+    [self setGraphView:nil];
+    [self setAddTaskButton:nil];
+    [self setDeleteTaskButton:nil];
+    [self setDragBarView:nil];
+    [self setFullView:nil];
+    [self setLeftHeaderImage:nil];
+    [self setMidHeaderImage:nil];
+    [self setRightHeaderImage:nil];
     [super viewDidUnload];
 }
 
@@ -367,15 +411,18 @@
     if ([[segue identifier] isEqualToString:@"ShowTaskDetails"]) {
         
         self.popover = [(UIStoryboardPopoverSegue *)segue popoverController];
-        TaskDetailViewController* taskDetailController = (TaskDetailViewController*)[[[segue destinationViewController] viewControllers] objectAtIndex:0];
-        taskDetailController.delegate = self;
         
     }
 
 }
 
-//addTask: create a task with default values then open the pop-up where user can modify values accordingly
 
+
+- (IBAction)deleteTask:(id)sender {
+}
+
+
+//addTask: create a task with default values then open the pop-up where user can modify values accordingly
 - (IBAction) addTask:(id)sender
 {
     
@@ -451,6 +498,75 @@
 {
     
     [self.popover dismissPopoverAnimated:YES];
+    
+}
+
+- (IBAction)resizeWindows:(UIPanGestureRecognizer *)sender {
+    
+    NSLog(@"The PanGestureRecognizer has been called!");
+    CGPoint translatedPoint = [sender translationInView:self.view];
+    CGPoint locationPoint = [sender locationInView:self.view];
+    NSLog(@"location points are now:%f,%f", locationPoint.x, locationPoint.y);
+    
+    if ([sender state] == UIGestureRecognizerStateBegan) {
+        
+        _initialX = [self.dragBarView center].x;
+        _initialY = [self.dragBarView center].y;
+        NSLog(@"Intial coordinates of dragbar view:%d,%d", _initialX, _initialY);
+        
+    }
+    
+    //translatedPoint = CGPointMake(_initialX+translatedPoint.x, _initialY);
+    _tableWidth = locationPoint.x - 30;
+    if(_tableWidth<0) _tableWidth = 0;
+    NSLog(@"Translated point of drag is:%f,%f", translatedPoint.x, translatedPoint.y);
+    
+    CGPoint newCenter = CGPointMake(_initialX + translatedPoint.x, _initialY);
+	[self.dragBarView setCenter:newCenter];
+    
+    //set frame for tableView by changing the width depending on translated point
+    CGRect frame = [self.taskTableView frame];
+    frame.size.width = _tableWidth;
+    [self.taskTableView setFrame:frame];
+    [self.taskTableView reloadData];
+    
+    //set frame for graphView by calculating the new width and then setting the start point to 1024 minus this width
+    frame = [self.graphView frame];
+    frame.size.width = 1024 - 4 - _tableWidth;
+    frame.origin.x = 1024 - frame.size.width;
+    [self.graphView setFrame:frame];
+    NSLog(@"Graph view now is %f pixels wide and starts at X position %f", frame.size.width, frame.origin.x);
+    
+    //update the table header
+    
+    frame = [self.midHeaderImage frame];
+    frame.size.width = _tableWidth - 60;
+    [self.midHeaderImage setFrame:frame];
+    frame = [self.rightHeaderImage frame];
+    frame.origin.x = _tableWidth - 30;
+    [self.rightHeaderImage setFrame:frame];
+    
+	/* apparently some nice animation
+     if([(UIPanGestureRecognizer*)sender state] == UIGestureRecognizerStateEnded) {
+        
+		CGFloat finalX = translatedPoint.x + (.35*[(UIPanGestureRecognizer*)sender velocityInView:self.view].x);
+		CGFloat finalY = translatedPoint.y + (.35*[(UIPanGestureRecognizer*)sender velocityInView:self.view].y);
+
+            
+        if(finalX < 0) { finalX = 0; }
+        else if(finalX > 1024) { finalX = 1024;	}
+            
+        if(finalY < 0) { finalY = 0; }
+        else if(finalY > 768) {	finalY = 1024; }
+        
+        [UIView beginAnimations:nil context:NULL];
+		[UIView setAnimationDuration:.35];
+		[UIView setAnimationCurve:UIViewAnimationCurveEaseOut];
+		[[sender view] setCenter:CGPointMake(finalX, finalY)];
+		[UIView commitAnimations];
+        
+    }
+    */
     
 }
      
