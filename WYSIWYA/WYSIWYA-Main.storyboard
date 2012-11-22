@@ -517,16 +517,12 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_topright_highlight.png" id="HdQ-Px-UZx">
-                                <rect key="frame" x="739" y="42" width="30" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_header_mid.png" id="MkB-GP-fov">
+                                <rect key="frame" x="30" y="40" width="711" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_topleft_highlight.png" id="lLT-nH-n9d">
-                                <rect key="frame" x="0.0" y="42" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="cell_topmid_highlight.png" id="MkB-GP-fov">
-                                <rect key="frame" x="30" y="42" width="711" height="30"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_header_right.png" id="HdQ-Px-UZx">
+                                <rect key="frame" x="739" y="40" width="30" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="WBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="0fE-Hb-o40">
@@ -546,7 +542,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="1" sectionFooterHeight="1" id="PH3-w9-D6V">
-                                <rect key="frame" x="0.0" y="69" width="769" height="679"/>
+                                <rect key="frame" x="0.0" y="70" width="769" height="678"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -678,7 +674,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Assigned to" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="A3G-zF-RB2">
-                                <rect key="frame" x="588" y="44" width="172" height="25"/>
+                                <rect key="frame" x="588" y="44" width="175" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -741,7 +737,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <action selector="deleteTask:" destination="Tnd-TU-L69" eventType="touchUpInside" id="viG-48-JNW"/>
                                 </connections>
                             </button>
-                            <view contentMode="left" id="Zpm-UT-d9N">
+                            <view contentMode="scaleAspectFill" id="Zpm-UT-d9N">
                                 <rect key="frame" x="749" y="0.0" width="60" height="797"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
@@ -755,11 +751,16 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="Mj3-vE-tUP" appends="YES" id="KF3-rN-utZ"/>
+                                            <outletCollection property="gestureRecognizers" destination="eFD-kC-x93" appends="YES" id="sgl-ys-QB9"/>
                                         </connections>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_header_left.png" id="lLT-nH-n9d">
+                                <rect key="frame" x="0.0" y="40" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
@@ -775,10 +776,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="dragBarView" destination="Zpm-UT-d9N" id="DKf-RE-ZpM"/>
                         <outlet property="fullView" destination="RYS-oo-1Fy" id="y8n-RG-Brj"/>
                         <outlet property="graphView" destination="hAS-VD-Gh5" id="fuV-ce-D6i"/>
+                        <outlet property="infoButton" destination="hJ7-g7-FlU" id="1U0-yN-9lh"/>
                         <outlet property="leftHeaderImage" destination="lLT-nH-n9d" id="CRY-rD-EhL"/>
                         <outlet property="midHeaderImage" destination="MkB-GP-fov" id="v1A-TB-DZH"/>
+                        <outlet property="panGestureRecognizer" destination="Mj3-vE-tUP" id="aB3-Au-Zrt"/>
                         <outlet property="rightHeaderImage" destination="HdQ-Px-UZx" id="HQk-m8-nHE"/>
                         <outlet property="searchDisplayController" destination="dpS-PK-k2d" id="VOa-iN-6OW"/>
+                        <outlet property="swipeLeftRecognizer" destination="eFD-kC-x93" id="BFw-4Q-E8j"/>
+                        <outlet property="swipeRightRecognizer" destination="H2k-8m-MhG" id="bjl-8m-mon"/>
                         <outlet property="taskTableView" destination="PH3-w9-D6V" id="iN3-9d-Mwc"/>
                     </connections>
                 </viewController>
@@ -799,6 +804,18 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <action selector="resizeWindows:" destination="Tnd-TU-L69" id="fUg-2M-0wa"/>
                     </connections>
                 </panGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="eFD-kC-x93">
+                    <connections>
+                        <action selector="swipeDividerLeft:" destination="Tnd-TU-L69" id="epz-2d-MzP"/>
+                        <outlet property="delegate" destination="Tnd-TU-L69" id="rKY-Zu-1qV"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="H2k-8m-MhG">
+                    <connections>
+                        <action selector="swipeDividerRight:" destination="Tnd-TU-L69" id="HPd-MG-MW1"/>
+                        <outlet property="delegate" destination="Tnd-TU-L69" id="U2z-qu-CJz"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3153" y="-2222"/>
         </scene>
@@ -1086,16 +1103,128 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="button_delete.png" width="32" height="32"/>
         <image name="button_info.png" width="32" height="32"/>
         <image name="button_new.png" width="32" height="32"/>
-        <image name="cell_topleft_highlight.png" width="30" height="30"/>
-        <image name="cell_topmid_highlight.png" width="90" height="30"/>
-        <image name="cell_topright_highlight.png" width="30" height="30"/>
         <image name="checkbox_unticked.png" width="152" height="34"/>
         <image name="import_project.png" width="152" height="151"/>
         <image name="new_project.png" width="152" height="151"/>
         <image name="open_project.png" width="152" height="151"/>
         <image name="slider.png" width="62" height="703"/>
+        <image name="table_header_left.png" width="30" height="30"/>
+        <image name="table_header_mid.png" width="90" height="30"/>
+        <image name="table_header_right.png" width="30" height="30"/>
         <image name="wysiwya_logo.png" width="320" height="160"/>
     </resources>
+    <classes>
+        <class className="CreateProjectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateProjectViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="createProject:"/>
+                <relationship kind="action" name="dateChanged:"/>
+                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
+                <relationship kind="outlet" name="inputEndDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="inputProjectDescription" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="inputProjectName" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="inputStartDate" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="ImportProjectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImportProjectViewController.h"/>
+        </class>
+        <class className="IndentedUILabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IndentedUILabel.h"/>
+        </class>
+        <class className="LoadProgressViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadProgressViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancelLoad:"/>
+                <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
+            </relationships>
+        </class>
+        <class className="ProjectListViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="invokeEditMode:"/>
+                <relationship kind="action" name="selectListSource:forEvent:"/>
+                <relationship kind="action" name="selectProject:"/>
+                <relationship kind="outlet" name="sourceSelector" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="ProjectSettingsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSettingsViewController.h"/>
+        </class>
+        <class className="ProjectStartScreenViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectStartScreenViewController.h"/>
+        </class>
+        <class className="TaskCellView" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskCellView.h"/>
+            <relationships>
+                <relationship kind="outlet" name="assignedToLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="effortLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="leftBorder" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="midSection" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="pctCompleteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rightBorder" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="statusIcon" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="taskNameLabel" candidateClass="IndentedUILabel"/>
+                <relationship kind="outlet" name="wbsLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TaskDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="clickHasStarted:"/>
+                <relationship kind="action" name="clickIsComplete:"/>
+                <relationship kind="action" name="save:"/>
+                <relationship kind="action" name="showPredecessors:"/>
+                <relationship kind="action" name="showResources:"/>
+                <relationship kind="action" name="showSchedule:"/>
+                <relationship kind="action" name="updatePctComplete:"/>
+                <relationship kind="outlet" name="fromDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="hasStartedButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="isCompleteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="pctCompleteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="pctCompleteSlider" candidateClass="UISlider"/>
+                <relationship kind="outlet" name="scheduleTypeLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="taskDetailsField" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="taskNameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="toDateLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="wbsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="workLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="TaskListTableViewDesign" superclassName="UITableView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskListTableViewDesign.h"/>
+        </class>
+        <class className="TaskListViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskListViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="addTask:"/>
+                <relationship kind="action" name="deleteTask:"/>
+                <relationship kind="action" name="editMode:"/>
+                <relationship kind="action" name="resizeWindows:" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="action" name="swipeDividerLeft:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="action" name="swipeDividerRight:" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="addTaskButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="deleteTaskButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="dragBarView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="fullView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="graphView" candidateClass="UIScrollView"/>
+                <relationship kind="outlet" name="infoButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="leftHeaderImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="midHeaderImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="panGestureRecognizer" candidateClass="UIPanGestureRecognizer"/>
+                <relationship kind="outlet" name="rightHeaderImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="swipeLeftRecognizer" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="swipeRightRecognizer" candidateClass="UISwipeGestureRecognizer"/>
+                <relationship kind="outlet" name="taskTableView" candidateClass="UITableView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

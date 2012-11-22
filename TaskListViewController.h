@@ -14,7 +14,7 @@
 
 
 
-@interface TaskListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TaskDetailViewControllerDelegate>
+@interface TaskListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, TaskDetailViewControllerDelegate, UIGestureRecognizerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIView *fullView;
 @property (weak, nonatomic) IBOutlet UIView *dragBarView;
@@ -26,6 +26,10 @@
 @property (weak, nonatomic) IBOutlet UIImageView *leftHeaderImage;
 @property (weak, nonatomic) IBOutlet UIImageView *midHeaderImage;
 @property (weak, nonatomic) IBOutlet UIImageView *rightHeaderImage;
+@property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *panGestureRecognizer;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeLeftRecognizer;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeRightRecognizer;
 
 
 - (IBAction)deleteTask:(id)sender;
@@ -33,6 +37,10 @@
 - (IBAction) editMode:(id)sender;
 - (void) popoverDidComplete;
 - (IBAction)resizeWindows:(UIPanGestureRecognizer *)sender;
+- (IBAction)swipeDividerLeft:(UISwipeGestureRecognizer *)sender;
+- (IBAction)swipeDividerRight:(UISwipeGestureRecognizer *)sender;
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer;
+
 
 
 @end
