@@ -10,9 +10,10 @@
 
 @protocol TaskDetailViewControllerDelegate; 
 
-@interface TaskDetailViewController : UIViewController
+@interface TaskDetailViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) id <TaskDetailViewControllerDelegate> delegate;
+@property (nonatomic) BOOL isNewTask;
 
 @property (weak, nonatomic) IBOutlet UILabel *wbsLabel;
 @property (weak, nonatomic) IBOutlet UITextField *taskNameField;
@@ -26,10 +27,10 @@
 @property (weak, nonatomic) IBOutlet UILabel *toDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *scheduleTypeLabel;
 
-
 @property (nonatomic) BOOL hasStarted;
 @property (nonatomic) BOOL isFinished;
 
+- (IBAction)closeWindow:(id)sender;
 
 - (IBAction)updatePctComplete:(id)sender;
 - (IBAction)clickHasStarted:(id)sender;
@@ -37,6 +38,8 @@
 - (IBAction)showSchedule:(id)sender;
 - (IBAction)showResources:(id)sender;
 - (IBAction)showPredecessors:(id)sender;
+- (void)alertView:(UIAlertView*)alertView clickedButtonAtIndex:(NSInteger)buttonIndex;
+- (BOOL)textFieldShouldReturn:(UITextField *)textField;
 
 @end
 

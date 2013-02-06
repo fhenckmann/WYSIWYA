@@ -34,6 +34,7 @@
 - (NSError*) saveContext;
 - (NSError*) deleteObject: (NSManagedObject*) object;
 - (NSError*) deleteAll;
+- (BOOL) hasChanges;
 
 @end
 

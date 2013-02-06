@@ -52,6 +52,8 @@
 - (void) reorderForInsertAfter;
 - (void) indent;
 - (void) unindent;
+- (BOOL) canIndent;
+- (BOOL) canUnindent;
 
 @end
 

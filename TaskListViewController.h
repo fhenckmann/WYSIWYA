@@ -27,19 +27,28 @@
 @property (weak, nonatomic) IBOutlet UIImageView *midHeaderImage;
 @property (weak, nonatomic) IBOutlet UIImageView *rightHeaderImage;
 @property (weak, nonatomic) IBOutlet UIButton *infoButton;
+@property (weak, nonatomic) IBOutlet UIButton *editButton;
 @property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *panGestureRecognizer;
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeLeftRecognizer;
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeRightRecognizer;
+@property (weak, nonatomic) IBOutlet UIImageView *sliderImage;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeTaskLeftRecognizer;
+@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeTaskRightRecognizer;
 
 
 - (IBAction)deleteTask:(id)sender;
-- (IBAction) addTask:(id)sender;
+- (void) addTask;
 - (IBAction) editMode:(id)sender;
 - (void) popoverDidComplete;
+
 - (IBAction)resizeWindows:(UIPanGestureRecognizer *)sender;
 - (IBAction)swipeDividerLeft:(UISwipeGestureRecognizer *)sender;
 - (IBAction)swipeDividerRight:(UISwipeGestureRecognizer *)sender;
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer;
+- (IBAction)swipeTaskLeft:(UISwipeGestureRecognizer *)sender;
+- (IBAction)swipeTaskRight:(UISwipeGestureRecognizer *)sender;
+
+
 
 
 

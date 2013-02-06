@@ -521,5 +521,36 @@
     
 }
 
+- (BOOL) canIndent
+{
+    
+    if ((self.isFirstChild) || (self.level==20)) {
+        
+        return NO;
+        
+    } else {
+        
+        return YES;
+        
+    }
+    
+}
+
+
+- (BOOL) canUnindent
+{
+    
+    if (self.level>2) {
+        
+        return YES;
+        
+    } else {
+        
+        return NO;
+        
+    }
+    
+}
+
 
 @end

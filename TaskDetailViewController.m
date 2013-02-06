@@ -41,14 +41,6 @@
 {
     [super viewDidLoad];
     
-    // create navigation bar buttons
-    
-    UIBarButtonItem* cancelButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)];
-    self.navigationItem.leftBarButtonItem = cancelButton;
-    
-    UIBarButtonItem* saveButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemSave target:self action:@selector(save:)];
-    self.navigationItem.rightBarButtonItem = saveButton;
-    
 	// load all values
     
     task = [SharedData sharedInstance].activeTask;
@@ -140,6 +132,8 @@
 - (IBAction) updatePctComplete:(id)sender
 {
     
+    [[SharedData sharedInstance].taskController saveContext];
+    [self.delegate popoverDidComplete];
     
 }
 
@@ -182,23 +176,88 @@
 
 }
 
-- (IBAction)cancel:(id)sender
-{
+#pragma mark window / navigation
+
+
+
+- (IBAction)closeWindow:(id)sender {
     
-    [[SharedData sharedInstance].taskController rollback];
-    [self.delegate popoverDidComplete];
+    if (![task.taskName isEqualToString:self.taskNameField.text]) task.taskName = self.taskNameField.text;
+    if (![task.taskDescription isEqualToString:self.taskDetailsField.text]) task.taskDescription = self.taskDetailsField.text;
+    if (task.pctComplete/100 != self.pctCompleteSlider.value) task.pctComplete = self.pctCompleteSlider.value * 100;
+    if (task.hasStarted != self.hasStarted) task.hasStarted = self.hasStarted;
+    if (task.isFinished != self.isFinished) task.isFinished = self.isFinished;
+    
+    NSDateFormatter* dateFormat = [[NSDateFormatter alloc] init];
+    [dateFormat setDateFormat:@"dd-MM-yyyy hh:mm"];
+    NSDate* tempStartDate = [dateFormat dateFromString:self.fromDateLabel.text];
+    NSDate* tempEndDate = [dateFormat dateFromString:self.toDateLabel.text];
+    
+    if(![task.startDate isEqualToDate:tempStartDate]) task.startDate = tempStartDate;
+    if (![task.endDate isEqualToDate:tempEndDate]) task.endDate = tempEndDate;
+    
+    if ([[SharedData sharedInstance].taskController hasChanges]) {
+        
+        NSLog(@"DONE button pressed, we've got changes to record.");
+        
+        if (self.isNewTask) {
+            
+            NSLog(@"The task is new, we'll just save and close.");
+            
+            //new task - we don't ask, we just save
+            [[SharedData sharedInstance].taskController saveContext];
+            [self.delegate popoverDidComplete];
+            
+            
+        } else {
+            
+            //task already exists, we ask if user wants to save
+            UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:@"Save Changes?" message:@"You have made changes to the task details. Would you like to save these changes?" delegate:self cancelButtonTitle:@"NO" otherButtonTitles:@"YES", nil];
+            
+            [alertView show];
+        }
+        
+    } else {
+        
+        NSLog(@"DONE button pressed, but no changes made.");
+        
+        [self.delegate popoverDidComplete];
+        
+    }
     
 }
 
-- (IBAction)save:(id)sender
+//alertView cancel and save actions
+
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    
-    [[SharedData sharedInstance].taskController saveContext];
-    [self.delegate popoverDidComplete];
+    if (buttonIndex) {
+     
+        NSLog(@"Save Changes called.");
+        [[SharedData sharedInstance].taskController saveContext];
+        [self.delegate popoverDidComplete];
+        
+    } else {
+
+        NSLog(@"Cancel Changes called.");
+        [[SharedData sharedInstance].taskController rollback];
+        [self.delegate popoverDidComplete];
+        
+    }
     
 }
 
-#pragma helper classes
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    
+    [textField resignFirstResponder];
+    return YES;
+    
+}
+
+
+#pragma mark helper classes
 
 - (NSString*) effortString
 {
@@ -224,7 +283,5 @@
     return [NSString stringWithFormat:@"%.01f of %.01f %@", effortComplete, totalEffort, unit];
     
 }
-
-
 
 @end

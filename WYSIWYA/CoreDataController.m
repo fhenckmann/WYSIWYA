@@ -71,7 +71,9 @@
 
 - (NSManagedObject*) objectAtIndexPath:(NSIndexPath*)indexPath
 {
+    
     return [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
 }
 
 - (NSManagedObject*) objectFollowing: (NSManagedObject*) object
@@ -163,7 +165,7 @@
 - (NSUInteger) numberOfObjectsInSection:(int)section
 {
     id <NSFetchedResultsSectionInfo> sectionInfo = [[self.fetchedResultsController sections] objectAtIndex:section];
-    NSLog(@"Core Data Controller method 'numberOfObjectsInSection' called for section %d. Will return %d rows.", section, [sectionInfo numberOfObjects]);
+    //NSLog(@"Core Data Controller method 'numberOfObjectsInSection' called for section %d. Will return %d rows.", section, [sectionInfo numberOfObjects]);
     return [sectionInfo numberOfObjects];
 }
 
@@ -359,6 +361,13 @@
         
         return nil;
     }
+    
+}
+
+- (BOOL) hasChanges
+{
+    
+    return [self.managedObjectContext hasChanges];
     
 }
 

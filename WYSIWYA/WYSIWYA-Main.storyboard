@@ -514,7 +514,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
             <objects>
                 <viewController title="Tasks" id="Tnd-TU-L69" customClass="TaskListViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="RYS-oo-1Fy">
-                        <rect key="frame" x="0.0" y="20" width="1024" height="748"/>
+                        <rect key="frame" x="0.0" y="20" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_header_mid.png" id="MkB-GP-fov">
@@ -542,79 +542,67 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="30" sectionHeaderHeight="1" sectionFooterHeight="1" id="PH3-w9-D6V">
-                                <rect key="frame" x="0.0" y="70" width="769" height="678"/>
+                                <rect key="frame" x="0.0" y="70" width="769" height="634"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="30" id="peH-CW-lX7" customClass="TaskCellView">
+                                    <tableViewCell contentMode="TopLeft" selectionStyle="gray" indentationWidth="10" reuseIdentifier="TaskCell" rowHeight="30" id="peH-CW-lX7" customClass="TaskCellView">
                                         <rect key="frame" x="0.0" y="1" width="769" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="769" height="29"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="3Hb-Sn-425">
-                                                    <rect key="frame" x="60" y="0.0" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="1Oc-1l-Cag">
-                                                    <rect key="frame" x="30" y="0.0" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="hiB-9j-yAL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" id="MpI-fh-2Qm">
-                                                    <rect key="frame" x="9" y="4" width="22" height="22"/>
+                                                    <rect key="frame" x="9" y="3" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="p9x-6a-zdD">
                                                     <rect key="frame" x="39" y="3" width="55" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mVq-yN-zit">
-                                                    <rect key="frame" x="347" y="3" width="40" height="21"/>
+                                                    <rect key="frame" x="340" y="3" width="40" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sK2-A3-MeG">
-                                                    <rect key="frame" x="391" y="3" width="76" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="sK2-A3-MeG">
+                                                    <rect key="frame" x="385" y="0.0" width="60" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nxb-V8-bl3">
-                                                    <rect key="frame" x="475" y="3" width="70" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nxb-V8-bl3">
+                                                    <rect key="frame" x="449" y="0.0" width="60" height="29"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UYm-k2-xAI">
-                                                    <rect key="frame" x="544" y="3" width="44" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="UYm-k2-xAI">
+                                                    <rect key="frame" x="529" y="3" width="39" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="-1" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tCV-DC-9Ao">
                                                     <rect key="frame" x="589" y="3" width="180" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DZ9-a8-c7G" customClass="IndentedUILabel">
                                                     <rect key="frame" x="69" y="3" width="280" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
@@ -625,10 +613,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                             <outlet property="assignedToLabel" destination="tCV-DC-9Ao" id="vdX-I1-RwE"/>
                                             <outlet property="effortLabel" destination="UYm-k2-xAI" id="uaS-Gt-U4l"/>
                                             <outlet property="endDateLabel" destination="nxb-V8-bl3" id="lDm-7Z-cRF"/>
-                                            <outlet property="leftBorder" destination="hiB-9j-yAL" id="aXE-wZ-bkB"/>
-                                            <outlet property="midSection" destination="1Oc-1l-Cag" id="kz4-aG-KVe"/>
                                             <outlet property="pctCompleteLabel" destination="mVq-yN-zit" id="zVQ-2c-Zel"/>
-                                            <outlet property="rightBorder" destination="3Hb-Sn-425" id="aYJ-dz-KAO"/>
                                             <outlet property="startDateLabel" destination="sK2-A3-MeG" id="VxQ-BS-5zh"/>
                                             <outlet property="statusIcon" destination="MpI-fh-2Qm" id="N83-dr-UiI"/>
                                             <outlet property="taskNameLabel" destination="DZ9-a8-c7G" id="42t-tW-yak"/>
@@ -637,8 +622,10 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="Tnd-TU-L69" id="cGe-if-w6c"/>
-                                    <outlet property="delegate" destination="Tnd-TU-L69" id="Dvm-Nf-RQY"/>
+                                    <outlet property="dataSource" destination="Tnd-TU-L69" id="sME-vF-C65"/>
+                                    <outlet property="delegate" destination="Tnd-TU-L69" id="hTE-5U-RpS"/>
+                                    <outletCollection property="gestureRecognizers" destination="D2l-pv-C1x" appends="YES" id="mmg-gN-Vwz"/>
+                                    <outletCollection property="gestureRecognizers" destination="poA-Xk-mQX" appends="YES" id="z2c-aV-pUl"/>
                                 </connections>
                             </tableView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="% Done" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="jUr-pU-kXe">
@@ -658,7 +645,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Finish" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="BOZ-lI-hIr">
-                                <rect key="frame" x="474" y="44" width="90" height="25"/>
+                                <rect key="frame" x="448" y="44" width="90" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -666,7 +653,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Work" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="14" id="6En-rE-pFM">
-                                <rect key="frame" x="543" y="44" width="55" height="25"/>
+                                <rect key="frame" x="527" y="44" width="55" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
@@ -681,8 +668,34 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleAspectFill" id="Zpm-UT-d9N">
+                                <rect key="frame" x="749" y="0.0" width="60" height="753"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="top" image="slider.png" id="TJY-LM-KZB">
+                                        <rect key="frame" x="0.0" y="-8" width="60" height="797"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <view opaque="NO" contentMode="scaleToFill" id="flb-zR-MWa">
+                                        <rect key="frame" x="0.0" y="0.0" width="60" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="Mj3-vE-tUP" appends="YES" id="KF3-rN-utZ"/>
+                                            <outletCollection property="gestureRecognizers" destination="eFD-kC-x93" appends="YES" id="sgl-ys-QB9"/>
+                                            <outletCollection property="gestureRecognizers" destination="H2k-8m-MhG" appends="YES" id="llO-mt-4ws"/>
+                                        </connections>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_header_left.png" id="lLT-nH-n9d">
+                                <rect key="frame" x="0.0" y="40" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="hAS-VD-Gh5">
-                                <rect key="frame" x="771" y="0.0" width="253" height="797"/>
+                                <rect key="frame" x="771" y="-44" width="253" height="797"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -702,13 +715,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="HoW-jH-MCK" kind="popover" identifier="ShowTaskDetails" popoverAnchorView="hJ7-g7-FlU" id="ZOj-5L-9cg">
+                                    <segue destination="qSY-KW-aeC" kind="popover" identifier="ShowExistingTask" popoverAnchorView="hJ7-g7-FlU" id="Ldl-fm-MIg">
                                         <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                     </segue>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qno-4h-8aX">
-                                <rect key="frame" x="56" y="3" width="40" height="37"/>
+                                <rect key="frame" x="104" y="3" width="40" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="button_new.png">
@@ -719,11 +732,13 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="addTask:" destination="Tnd-TU-L69" eventType="touchUpInside" id="bDq-f1-Tgp"/>
+                                    <segue destination="qSY-KW-aeC" kind="popover" identifier="ShowNewTask" popoverAnchorView="qno-4h-8aX" id="uNE-8P-SKU">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Li-hE-nOO">
-                                <rect key="frame" x="104" y="3" width="40" height="37"/>
+                                <rect key="frame" x="152" y="3" width="40" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" image="button_delete.png">
@@ -737,43 +752,37 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                     <action selector="deleteTask:" destination="Tnd-TU-L69" eventType="touchUpInside" id="viG-48-JNW"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleAspectFill" id="Zpm-UT-d9N">
-                                <rect key="frame" x="749" y="0.0" width="60" height="797"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <subviews>
-                                    <imageView opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" image="slider.png" id="TJY-LM-KZB">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="797"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    </imageView>
-                                    <view opaque="NO" contentMode="scaleToFill" id="flb-zR-MWa">
-                                        <rect key="frame" x="0.0" y="0.0" width="60" height="45"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="Mj3-vE-tUP" appends="YES" id="KF3-rN-utZ"/>
-                                            <outletCollection property="gestureRecognizers" destination="eFD-kC-x93" appends="YES" id="sgl-ys-QB9"/>
-                                        </connections>
-                                    </view>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="table_header_left.png" id="lLT-nH-n9d">
-                                <rect key="frame" x="0.0" y="40" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="8hs-XO-olx">
+                                <rect key="frame" x="56" y="3" width="40" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" image="button_edit.png">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="editMode:" destination="Tnd-TU-L69" eventType="touchUpInside" id="2v5-xB-0Aa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Tasks" id="m2I-5m-0nP"/>
-                    <toolbarItems/>
+                    <toolbarItems>
+                        <barButtonItem title="Item" id="gT3-Im-jWW"/>
+                    </toolbarItems>
                     <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="addTaskButton" destination="qno-4h-8aX" id="vlH-Ba-b7L"/>
                         <outlet property="deleteTaskButton" destination="2Li-hE-nOO" id="ydy-TJ-d2l"/>
                         <outlet property="dragBarView" destination="Zpm-UT-d9N" id="DKf-RE-ZpM"/>
+                        <outlet property="editButton" destination="8hs-XO-olx" id="Gy3-P8-KdY"/>
                         <outlet property="fullView" destination="RYS-oo-1Fy" id="y8n-RG-Brj"/>
                         <outlet property="graphView" destination="hAS-VD-Gh5" id="fuV-ce-D6i"/>
                         <outlet property="infoButton" destination="hJ7-g7-FlU" id="1U0-yN-9lh"/>
@@ -782,8 +791,11 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="panGestureRecognizer" destination="Mj3-vE-tUP" id="aB3-Au-Zrt"/>
                         <outlet property="rightHeaderImage" destination="HdQ-Px-UZx" id="HQk-m8-nHE"/>
                         <outlet property="searchDisplayController" destination="dpS-PK-k2d" id="VOa-iN-6OW"/>
+                        <outlet property="sliderImage" destination="TJY-LM-KZB" id="TT0-FI-XHf"/>
                         <outlet property="swipeLeftRecognizer" destination="eFD-kC-x93" id="BFw-4Q-E8j"/>
                         <outlet property="swipeRightRecognizer" destination="H2k-8m-MhG" id="bjl-8m-mon"/>
+                        <outlet property="swipeTaskLeftRecognizer" destination="poA-Xk-mQX" id="CFk-tn-4tX"/>
+                        <outlet property="swipeTaskRightRecognizer" destination="D2l-pv-C1x" id="3hf-wD-WVb"/>
                         <outlet property="taskTableView" destination="PH3-w9-D6V" id="iN3-9d-Mwc"/>
                     </connections>
                 </viewController>
@@ -816,8 +828,38 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <outlet property="delegate" destination="Tnd-TU-L69" id="U2z-qu-CJz"/>
                     </connections>
                 </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="D2l-pv-C1x">
+                    <connections>
+                        <action selector="swipeTaskRight:" destination="Tnd-TU-L69" id="xa7-bs-pqe"/>
+                        <outlet property="delegate" destination="Tnd-TU-L69" id="Zb7-1r-K3q"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="poA-Xk-mQX">
+                    <connections>
+                        <action selector="swipeTaskLeft:" destination="Tnd-TU-L69" id="CqZ-vR-CgO"/>
+                        <outlet property="delegate" destination="Tnd-TU-L69" id="xUg-qe-Gej"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3153" y="-2222"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="gW5-qE-V7A">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="qSY-KW-aeC" sceneMemberID="viewController">
+                    <value key="contentSizeForViewInPopover" type="size" width="536" height="720"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="B0W-VF-aEQ">
+                        <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="HoW-jH-MCK" kind="relationship" relationship="rootViewController" id="pGL-Ag-mNk"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Djm-ev-djh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3334" y="-3285"/>
         </scene>
         <!--Task Detail View Controller-->
         <scene sceneID="fnh-Xb-rsy">
@@ -837,6 +879,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="yes"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HoW-jH-MCK" id="r4P-Ef-ARz"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="WBS" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="kSk-Dg-Kwl">
                                 <rect key="frame" x="194" y="23" width="42" height="21"/>
@@ -902,6 +947,9 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                 <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="HoW-jH-MCK" id="xip-sx-963"/>
+                                </connections>
                             </textView>
                             <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="Ccy-2D-ydo">
                                 <rect key="frame" x="133" y="346" width="331" height="23"/>
@@ -1051,6 +1099,14 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Ef4-64-U3l">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="QrM-aG-F4Q">
+                            <color key="tintColor" red="0.1187842153" green="0.68952440690000005" blue="0.1166457573" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <action selector="closeWindow:" destination="HoW-jH-MCK" id="YGa-H4-koB"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="536" height="720"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1071,7 +1127,7 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XnN-OU-Gts" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4538" y="-2537"/>
+            <point key="canvasLocation" x="4472" y="-3041"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="P5o-7E-a2y">
@@ -1101,133 +1157,25 @@ AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
         <image name="background_create_project.png" width="500" height="308"/>
         <image name="background_task_details.png" width="538" height="678"/>
         <image name="button_delete.png" width="32" height="32"/>
+        <image name="button_edit.png" width="32" height="32"/>
         <image name="button_info.png" width="32" height="32"/>
         <image name="button_new.png" width="32" height="32"/>
         <image name="checkbox_unticked.png" width="152" height="34"/>
         <image name="import_project.png" width="152" height="151"/>
         <image name="new_project.png" width="152" height="151"/>
         <image name="open_project.png" width="152" height="151"/>
-        <image name="slider.png" width="62" height="703"/>
+        <image name="slider.png" width="91" height="750"/>
         <image name="table_header_left.png" width="30" height="30"/>
         <image name="table_header_mid.png" width="90" height="30"/>
         <image name="table_header_right.png" width="30" height="30"/>
         <image name="wysiwya_logo.png" width="320" height="160"/>
     </resources>
-    <classes>
-        <class className="CreateProjectViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CreateProjectViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="createProject:"/>
-                <relationship kind="action" name="dateChanged:"/>
-                <relationship kind="outlet" name="datePicker" candidateClass="UIDatePicker"/>
-                <relationship kind="outlet" name="inputEndDate" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="inputProjectDescription" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="inputProjectName" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="inputStartDate" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="saveButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="ImportProjectViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ImportProjectViewController.h"/>
-        </class>
-        <class className="IndentedUILabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IndentedUILabel.h"/>
-        </class>
-        <class className="LoadProgressViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadProgressViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelLoad:"/>
-                <relationship kind="outlet" name="progressBar" candidateClass="UIProgressView"/>
-            </relationships>
-        </class>
-        <class className="ProjectListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="invokeEditMode:"/>
-                <relationship kind="action" name="selectListSource:forEvent:"/>
-                <relationship kind="action" name="selectProject:"/>
-                <relationship kind="outlet" name="sourceSelector" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="ProjectSettingsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectSettingsViewController.h"/>
-        </class>
-        <class className="ProjectStartScreenViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ProjectStartScreenViewController.h"/>
-        </class>
-        <class className="TaskCellView" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskCellView.h"/>
-            <relationships>
-                <relationship kind="outlet" name="assignedToLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="effortLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="endDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="leftBorder" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="midSection" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="pctCompleteLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rightBorder" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="startDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="statusIcon" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="taskNameLabel" candidateClass="IndentedUILabel"/>
-                <relationship kind="outlet" name="wbsLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TaskDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="clickHasStarted:"/>
-                <relationship kind="action" name="clickIsComplete:"/>
-                <relationship kind="action" name="save:"/>
-                <relationship kind="action" name="showPredecessors:"/>
-                <relationship kind="action" name="showResources:"/>
-                <relationship kind="action" name="showSchedule:"/>
-                <relationship kind="action" name="updatePctComplete:"/>
-                <relationship kind="outlet" name="fromDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="hasStartedButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="isCompleteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="pctCompleteLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="pctCompleteSlider" candidateClass="UISlider"/>
-                <relationship kind="outlet" name="scheduleTypeLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="taskDetailsField" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="taskNameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="toDateLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="wbsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="workLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="TaskListTableViewDesign" superclassName="UITableView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskListTableViewDesign.h"/>
-        </class>
-        <class className="TaskListViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TaskListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="addTask:"/>
-                <relationship kind="action" name="deleteTask:"/>
-                <relationship kind="action" name="editMode:"/>
-                <relationship kind="action" name="resizeWindows:" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="action" name="swipeDividerLeft:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="action" name="swipeDividerRight:" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="addTaskButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="deleteTaskButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="dragBarView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="fullView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="graphView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="infoButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="leftHeaderImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="midHeaderImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="panGestureRecognizer" candidateClass="UIPanGestureRecognizer"/>
-                <relationship kind="outlet" name="rightHeaderImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="swipeLeftRecognizer" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="swipeRightRecognizer" candidateClass="UISwipeGestureRecognizer"/>
-                <relationship kind="outlet" name="taskTableView" candidateClass="UITableView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="uNE-8P-SKU"/>
+    </inferredMetricsTieBreakers>
 </document>
