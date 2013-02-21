@@ -32,8 +32,7 @@
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeLeftRecognizer;
 @property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeRightRecognizer;
 @property (weak, nonatomic) IBOutlet UIImageView *sliderImage;
-@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeTaskLeftRecognizer;
-@property (strong, nonatomic) IBOutlet UISwipeGestureRecognizer *swipeTaskRightRecognizer;
+@property (strong, nonatomic) IBOutlet UIPanGestureRecognizer *swipeTaskRecognizer;
 
 
 - (IBAction)deleteTask:(id)sender;
@@ -45,10 +44,7 @@
 - (IBAction)swipeDividerLeft:(UISwipeGestureRecognizer *)sender;
 - (IBAction)swipeDividerRight:(UISwipeGestureRecognizer *)sender;
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer;
-- (IBAction)swipeTaskLeft:(UISwipeGestureRecognizer *)sender;
-- (IBAction)swipeTaskRight:(UISwipeGestureRecognizer *)sender;
-
-
+- (IBAction)swipeTask:(UIPanGestureRecognizer *)sender;
 
 
 

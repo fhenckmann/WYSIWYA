@@ -26,6 +26,9 @@
     BOOL _buttonsOnLeftSide;
     int _dividerMiddlePosition;
     BOOL _editMode;
+    Task* _swipedTask;
+    TaskCellView* _swipedCell;
+    NSMutableArray* _heirCells;
     
 }
 
@@ -103,6 +106,9 @@
     frame.origin.x = _tableWidth - 30;
     [self.rightHeaderImage setFrame:frame];
     
+//table footer
+    [[[self taskTableView] footerViewForSection:0] setBackgroundView:[[UIImageView alloc] initWithImage:[UIImage  imageNamed:@"cell_bottommid_highlight"]]];
+    
 //additional formatting for the buttons
     [self.infoButton setImage:[UIImage imageNamed:@"button_info_highlight.png"] forState:UIControlStateHighlighted];
     [self.infoButton setImage:[UIImage imageNamed:@"button_info_disabled.png"] forState:UIControlStateDisabled];
@@ -114,8 +120,7 @@
     
 //edit settings
     _editMode = NO;
-    [[self swipeTaskLeftRecognizer] setEnabled:NO];
-    [[self swipeTaskRightRecognizer] setEnabled:NO];
+    [[self swipeTaskRecognizer] setEnabled:NO];
     
 }
 
@@ -163,6 +168,9 @@
         UIImageView* leftSideEven = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_left_white.png"]];
         UIImageView* middleEven = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_mid_white.png"]];
         UIImageView* rightSideEven = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_right_white.png"]];
+        leftSideEven.opaque = NO;
+        middleEven.opaque = NO;
+        rightSideEven.opaque = NO;
         [returnView addSubview:leftSideEven];
         leftSideEven.frame = CGRectMake(0,0,30,30);
         [returnView addSubview:middleEven];
@@ -236,7 +244,37 @@
         [returnView addSubview:highlightRightBottom];
         highlightRightBottom.frame = CGRectMake(_tableWidth-30,0,30,30);
         
+    } else if ([viewType isEqualToString:@"selected_even"]) {
+        
+        //...and then the ones at the bottom of the table
+        UIImageView* highlightLeftBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_left_selected_even.png"]];
+        UIImageView* highlightMiddleBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_mid_selected_even.png"]];
+        UIImageView* highlightRightBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_right_selected_even.png"]];
+        [returnView addSubview:highlightLeftBottom];
+        highlightLeftBottom.frame = CGRectMake(0,0,30,30);
+        [returnView addSubview:highlightMiddleBottom];
+        highlightMiddleBottom.frame = CGRectMake(30,0,_tableWidth-60,30);
+        [returnView addSubview:highlightRightBottom];
+        highlightRightBottom.frame = CGRectMake(_tableWidth-30,0,30,30);
+        
+    } else if ([viewType isEqualToString:@"selected_odd"]) {
+        
+        //...and then the ones at the bottom of the table
+        UIImageView* highlightLeftBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_left_selected_odd.png"]];
+        UIImageView* highlightMiddleBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_mid_selected_odd.png"]];
+        UIImageView* highlightRightBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"cell_right_selected_odd.png"]];
+        [returnView addSubview:highlightLeftBottom];
+        highlightLeftBottom.frame = CGRectMake(0,0,30,30);
+        [returnView addSubview:highlightMiddleBottom];
+        highlightMiddleBottom.frame = CGRectMake(30,0,_tableWidth-60,30);
+        [returnView addSubview:highlightRightBottom];
+        highlightRightBottom.frame = CGRectMake(_tableWidth-30,0,30,30);
+        
     }
+    
+    
+    
+    
     
     return returnView;
     
@@ -286,6 +324,12 @@
         {  return YES; }
  
  }
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)aTableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    return UITableViewCellEditingStyleNone;
+    
+}
 
 
 
@@ -360,6 +404,25 @@
     
 }
 
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section {
+    
+    CGRect frame = CGRectMake(0,0,_tableWidth,15);
+    UIView* returnView = [[UIView alloc] initWithFrame:frame];
+    
+    UIImageView* highlightLeftBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"footer_left.png"]];
+    UIImageView* highlightMiddleBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"footer_mid.png"]];
+    UIImageView* highlightRightBottom = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"footer_right.png"]];
+    [returnView addSubview:highlightLeftBottom];
+    highlightLeftBottom.frame = CGRectMake(0,0,30,15);
+    [returnView addSubview:highlightMiddleBottom];
+    highlightMiddleBottom.frame = CGRectMake(30,0,_tableWidth-60,15);
+    [returnView addSubview:highlightRightBottom];
+    highlightRightBottom.frame = CGRectMake(_tableWidth-30,0,30,15);
+    
+    return returnView;
+    
+}
+
 
 
 - (NSIndexPath *)tableView:(UITableView *)tableView targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
@@ -406,7 +469,7 @@
     cell.effortLabel.text       = [NSString stringWithFormat:@"%d", task.effortComplete];
     cell.assignedToLabel.text   = task.assignedTo;
     
-    if (rowNumber < lastRow) {
+//    if (rowNumber < lastRow) {
         
         cell.selectedBackgroundView = [self getCellBackground:@"middle_highlight"];
         
@@ -419,7 +482,7 @@
             cell.backgroundView = [self getCellBackground:@"middle_even"];
         }
         
-    } else {
+/*    } else {
         
         cell.selectedBackgroundView = [self getCellBackground:@"end_highlight"];
         
@@ -432,9 +495,11 @@
             cell.backgroundView = [self getCellBackground:@"end_even"];
             
         }
+
         
     }
-    
+
+*/
     
     //if edit mode is on
     //cell.showsReorderControl = YES;
@@ -459,8 +524,7 @@
     [self setSwipeRightRecognizer:nil];
     [self setSliderImage:nil];
     [self setEditButton:nil];
-    [self setSwipeTaskLeftRecognizer:nil];
-    [self setSwipeTaskRightRecognizer:nil];
+    [self setSwipeTaskRecognizer:nil];
     [super viewDidUnload];
 }
 
@@ -607,15 +671,13 @@
     if (_editMode) {
         
         _editMode = NO;
-        [[self swipeTaskLeftRecognizer] setEnabled:NO];
-        [[self swipeTaskRightRecognizer] setEnabled:NO];
+        [[self swipeTaskRecognizer] setEnabled:NO];
         [self.editButton setImage:[UIImage imageNamed:@"button_edit.png"] forState:UIControlStateNormal];
         
     } else {
         
         _editMode = YES;
-        [[self swipeTaskLeftRecognizer] setEnabled:YES];
-        [[self swipeTaskRightRecognizer] setEnabled:YES];
+        [[self swipeTaskRecognizer] setEnabled:YES];
         [self.editButton setImage:[UIImage imageNamed:@"button_edit_active.png"] forState:UIControlStateNormal];
         
     }
@@ -645,44 +707,133 @@
     
 }
 
-- (IBAction)swipeTaskLeft:(UISwipeGestureRecognizer *)sender {
+
+- (IBAction)swipeTask:(UIPanGestureRecognizer *)sender {
     
-    NSLog(@"SwipeTaskLeft called.");
+    NSLog(@"SwipeTask called.");
     
-    CGPoint swipeLocation = [sender locationInView:[self taskTableView]];
-    NSIndexPath* swipedIndexPath = [[self taskTableView] indexPathForRowAtPoint:swipeLocation];
-    Task* swipedTask = ((Task*)[[SharedData sharedInstance].taskController objectAtIndexPath:swipedIndexPath]);
+    CGPoint translatedPoint = [sender translationInView:self.taskTableView];
+    NSLog(@"Translated swipe point: %f", translatedPoint.x);
     
-    if ([swipedTask canUnindent]) {
+    
+    //start of swipe
+    //determine the swiped cell and select it, together with all heir
+    
+    if ([sender state] == UIGestureRecognizerStateBegan) {
         
-        //unindent chosen task
-        [swipedTask unindent];
+        NSLog(@"Swipe state began...");
         
-    } else {
+    //determine swipe cell
+        CGPoint swipeLocation = [sender locationInView:[self taskTableView]];
+        NSLog(@"Swipe Location: x=%f, y=%f", swipeLocation.x, swipeLocation.y);
+        NSIndexPath* swipedIndexPath = [[self taskTableView] indexPathForRowAtPoint:swipeLocation];
+        NSLog(@"Row number that was swiped: %d", swipedIndexPath.row);
+        _swipedTask = ((Task*)[[SharedData sharedInstance].taskController objectAtIndexPath:swipedIndexPath]);
+        _swipedCell = ((TaskCellView*)[[self taskTableView] cellForRowAtIndexPath:swipedIndexPath]);
         
-        //can't unindent animation
+        _initialX = _swipedCell.taskNameLabel.frame.origin.x;
+        
+    //select swiped cell
+        
+        if (swipedIndexPath.row % 2) {
+            
+            _swipedCell.backgroundView = [self getCellBackground:@"selected_odd"];
+            
+        } else {
+            
+            _swipedCell.backgroundView = [self getCellBackground:@"selected_even"];
+
+        }
+        [_swipedCell setNeedsDisplay];
+        [_swipedCell setNeedsLayout];
+            
+    //determine all heir cells and select them
+        NSArray* visibleCells = [[self taskTableView] visibleCells];
+        
+        _heirCells = [[NSMutableArray alloc] init];
+            
+        for (TaskCellView* cell in visibleCells) {
+                
+            Task* currentTask = ((Task*)[[SharedData sharedInstance].taskController objectAtIndexPath:[[self taskTableView]  indexPathForCell:cell]]);
+                
+            if ([_swipedTask isAncestor:currentTask]) {
+                
+                [_heirCells addObject:currentTask];
+                    
+                int rowNumber = [[self taskTableView] indexPathForCell:cell].row;
+                
+                if (rowNumber % 2) {
+                        cell.backgroundView = [self getCellBackground:@"selected_odd"];
+                } else {
+                        cell.backgroundView = [self getCellBackground:@"selected_even"];
+                    }
+                [cell setNeedsDisplay];
+                [cell setNeedsLayout];
+            }
+        }
+        
     }
     
+    //animate the movement
+    _swipedCell.taskNameLabel.indention = (translatedPoint.x>8)?8:translatedPoint.x;
     
-}
+    
+    if ([sender state] == UIGestureRecognizerStateEnded) {
+        
+        NSLog(@"Swipe state ended...");
+        
+    //was it an indent movement?
+        if (translatedPoint.x > 8) {
+            
+            if ([_swipedTask canIndent]) {
+                
+                NSLog(@"Task can be indented.");
+                
+                //indent chosen task
+                CGRect frame = [_swipedCell.taskNameLabel frame];
+                frame.origin.x = _initialX;
+                [_swipedCell.taskNameLabel setFrame:frame];
+                [_swipedTask indent];
+                [[SharedData sharedInstance].taskController saveContext];
+                [self.taskTableView reloadData];
+                
+            } else {
+                
+                //can't indent animation
+                
+                CGRect frame = [_swipedCell.taskNameLabel frame];
+                frame.origin.x = _initialX;
+                [_swipedCell.taskNameLabel setFrame:frame];
+                
+            }
+            
+        } else if (translatedPoint.x < -8) {
+        
+            //unindent movement
+            if ([_swipedTask canUnindent]) {
+                
+                NSLog(@"Task can be indented.");
+                
+                //indent chosen task
+                CGRect frame = [_swipedCell.taskNameLabel frame];
+                frame.origin.x = _initialX;
+                [_swipedCell.taskNameLabel setFrame:frame];
+                [_swipedTask unindent];
+                [[SharedData sharedInstance].taskController saveContext];
+                [self.taskTableView reloadData];
+                
+            } else {
+                
+                //can't unindent animation
+                
+                CGRect frame = [_swipedCell.taskNameLabel frame];
+                frame.origin.x = _initialX;
+                [_swipedCell.taskNameLabel setFrame:frame];
+                [self.taskTableView reloadData];
 
-- (IBAction)swipeTaskRight:(UISwipeGestureRecognizer *)sender {
-    
-    NSLog(@"SwipeTaskRight called.");
-    
-    CGPoint swipeLocation = [sender locationInView:[self taskTableView]];
-    NSIndexPath* swipedIndexPath = [[self taskTableView] indexPathForRowAtPoint:swipeLocation];
-    Task* swipedTask = ((Task*)[[SharedData sharedInstance].taskController objectAtIndexPath:swipedIndexPath]);
-    
-    if ([swipedTask canIndent]) {
-        
-        //indent chosen task
-        [swipedTask indent];
-        
-    } else {
-        
-        //can't indent animation
-    }    
+            }
+        }
+    }
     
 }
 

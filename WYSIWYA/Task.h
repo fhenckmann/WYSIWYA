@@ -54,6 +54,8 @@
 - (void) unindent;
 - (BOOL) canIndent;
 - (BOOL) canUnindent;
+- (BOOL) isAncestor:(Task*)potentialHeir;
+
 
 @end
 

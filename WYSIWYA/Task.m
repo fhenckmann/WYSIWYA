@@ -521,6 +521,22 @@
     
 }
 
+
+- (BOOL) isAncestor:(Task *)potentialHeir
+{
+    
+    if ([potentialHeir.formattedWbs rangeOfString:self.formattedWbs].location != 0) {
+        
+        return NO;
+        
+    } else {
+        
+        return YES;
+    }
+    
+}
+
+
 - (BOOL) canIndent
 {
     
